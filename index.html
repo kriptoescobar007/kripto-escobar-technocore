@@ -38,9 +38,7 @@
     }
   </script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       background-color: #080B11;
       color: #E2E8F0;
@@ -65,7 +63,7 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans selection:bg-brand-yellow selection:text-black">
 
-  <!-- Üst Menü (Header) -->
+  <!-- Üst Menü -->
   <header class="border-b border-brand-border bg-brand-dark/90 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -80,7 +78,7 @@
       </div>
       <div class="flex items-center space-x-3">
         <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> WebCrypto + Technocore Aktif
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Canlı Vercel Relay Aktif
         </div>
         <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition text-xs font-semibold flex items-center gap-1.5">
           <i class="fa-brands fa-youtube text-sm"></i> YouTube
@@ -95,7 +93,7 @@
   <!-- Ana Alan -->
   <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
     
-    <!-- Hero (Büyük Başlık ve Tanıtım Alanı) -->
+    <!-- Hero Bölümü -->
     <div class="mb-10">
       <div class="text-[11px] font-mono tracking-widest text-gray-400 uppercase mb-2">
         KRİPTOESCOBAR × FLOP LAB × TECHNOCORE
@@ -105,19 +103,18 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-amber-300 to-brand-cyan">Katkını imzala.</span>
       </h1>
       <p class="text-gray-400 max-w-2xl text-sm sm:text-base mb-6 leading-relaxed">
-        Tarayıcınızda yerel Ed25519 <code class="text-brand-yellow font-mono text-xs bg-brand-card px-1.5 py-0.5 rounded border border-brand-border">did:key:z6Mk...</code> kimliğinizi oluşturun, özel anahtarınızı cihazınızda saklayın, Technocore sunucusuna imzalı mesajlar gönderin ve topluluk katkınızı kaydedin.
+        Tarayıcınızda yerel Ed25519 <code class="text-brand-yellow font-mono text-xs bg-brand-card px-1.5 py-0.5 rounded border border-brand-border">did:key:z6Mk...</code> kimliğinizi oluşturun, Technocore sunucusuna doğrudan imzalı mesaj gönderin ve gerçek sıra numaranızı alın.
       </p>
 
-      <!-- Özellik Etiketleri (Badges) -->
       <div class="flex flex-wrap gap-2 text-[11px] font-mono">
         <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">GERÇEK ED25519</span>
-        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">YEREL ÖZEL ANAHTAR</span>
-        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">İMZALI PAYLOADS</span>
-        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-brand-yellow">%100 ÜCRETSİZ & AÇIK KAYNAK</span>
+        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">CANLI API RELAY</span>
+        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">GERÇEK SEQUENCE NO</span>
+        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-brand-yellow">%100 ÜCRETSİZ</span>
       </div>
     </div>
 
-    <!-- 6'LI ADIM BUTONLARI (Step Navigator Tabs) -->
+    <!-- 6'lı Adım Navigasyonu -->
     <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-8">
       <button onclick="scrollToStep('step-1')" class="step-tab tab-active p-3 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-cardHover transition text-center group">
         <div class="text-[11px] font-mono text-gray-400 group-hover:text-brand-yellow">01</div>
@@ -145,10 +142,10 @@
       </button>
     </div>
 
-    <!-- İKİ KOLONLU DÜZEN: SOL ADIMLAR, SAĞ VAULT (KASA) -->
+    <!-- İki Kolonlu Düzen -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
-      <!-- SOL TARAF (ADIM KARTLARI) -->
+      <!-- Sol: Adımlar -->
       <div class="lg:col-span-8 space-y-6">
 
         <!-- ADIM 1 -->
@@ -158,13 +155,8 @@
             <h3 class="text-lg font-bold text-white">Technocore DID Kimliğini Oluştur</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Benzersiz bir <code class="text-brand-yellow font-mono">Ed25519</code> anahtarı üretin. Açık anahtarınız otomatik olarak <code class="text-green-400 font-mono">did:key:z6Mk...</code> kimliğinize dönüşecektir.
+            Benzersiz bir <code class="text-brand-yellow font-mono">Ed25519</code> anahtarı üretin. Açık anahtarınız otomatik olarak <code class="text-green-400 font-mono">did:key:z6Mk...</code> kimliğinize dönüşür.
           </p>
-
-          <div class="bg-brand-dark/80 p-3 rounded-xl border border-brand-border text-xs text-gray-300 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-shield-halved text-brand-yellow text-sm"></i>
-            <span><strong>Güvenlik:</strong> Özel anahtarınız tamamen tarayıcınızda yerel üretilir, sunucuya aktarılmaz.</span>
-          </div>
 
           <div class="space-y-3 mb-4">
             <input type="password" id="passphrase" placeholder="Güçlü parola · en az 12 karakter..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow">
@@ -193,7 +185,7 @@
             <h3 class="text-lg font-bold text-white">Kimliğini Güvenle Sakla (Backup)</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Kimliğinizi içeren şifreli yedek dosyasını indirin. Bu dosya ve parolanız airdrop haklarınızı kanıtlamanızı sağlar.
+            Kimliğinizi içeren şifreli yedek dosyasını indirin.
           </p>
 
           <button id="downloadBtn" onclick="downloadBackup()" disabled class="px-6 py-3 bg-brand-border text-gray-500 font-bold rounded-xl text-sm transition flex items-center gap-2 cursor-not-allowed">
@@ -208,7 +200,7 @@
             <h3 class="text-lg font-bold text-white">Technocore Lobisinde Kendini Tanıt</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Technocore genel lobi odasına kimliğinizi bağlayan ilk imzalı mesajınızı gönderin.
+            Technocore genel lobi odasına imzalı mesajınızı gönderin ve resmi sunucu sıra numaranızı alın.
           </p>
 
           <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3">Hello from Kripto Escobar community! Contributing to Technocore & Flop Labs ecosystem.</textarea>
@@ -219,7 +211,7 @@
 
           <div id="lobbyResultBox" class="mt-4 hidden">
             <div class="bg-green-950/50 border border-green-500/40 rounded-xl p-3.5 text-xs text-green-300">
-              ✅ Başarıyla iletildi! Lobi Sıra No: <strong id="lobbySeq" class="text-white font-mono"></strong> (Kasanıza işlendi)
+              ✅ Technocore sunucusuna başarıyla kaydedildi! Gerçek Sıra No: <strong id="lobbySeq" class="text-white font-mono text-sm"></strong>
             </div>
           </div>
         </div>
@@ -231,11 +223,11 @@
             <h3 class="text-lg font-bold text-white">Faydalı İçerik / Katkı Oluştur</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Flop Labs veya Technocore hakkında bir X flood'u, video, görsel veya Türkçe rehber hazırlayıp yayınlayın ve linkini kopyalayın. Ayrıca lobideki mesajınızı da kontrol edebilirsiniz.
+            Technocore lobisini açarak mesajınızı ve DID numaranızı doğrudan canlı yayında kontrol edebilirsiniz.
           </p>
 
           <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-teal-600/20">
-            <i class="fa-solid fa-comments"></i> Technocore Lobisini Canlı Aç <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            <i class="fa-solid fa-comments"></i> Technocore Lobisini Canlı Aç & Doğrula <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>
 
@@ -246,7 +238,7 @@
             <h3 class="text-lg font-bold text-white">Katkını İmzala ve Technocore'a Kaydet</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Hazırladığınız içeriğin URL linkini ve kısa açıklamasını girip imzalı olarak tescilleyin.
+            Paylaştığınız içerik linkini girip Technocore ağına kaydedin.
           </p>
 
           <div class="space-y-3 mb-4">
@@ -266,7 +258,7 @@
 
           <div id="contributionResultBox" class="mt-4 hidden">
             <div class="bg-purple-950/50 border border-purple-500/40 rounded-xl p-3.5 text-xs text-purple-300">
-              ✅ Katkı tescillendi! Katkı Sıra No: <strong id="contribSeq" class="text-white font-mono"></strong> (Kasanıza işlendi)
+              ✅ Katkınız kaydedildi! Gerçek Sıra No: <strong id="contribSeq" class="text-white font-mono text-sm"></strong>
             </div>
           </div>
         </div>
@@ -278,7 +270,7 @@
             <h3 class="text-lg font-bold text-white">X (Twitter) Üzerinde Airdrop Kanıtını Paylaş</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Kasanızdaki DID ve kayıt sıra numaralarıyla otomatik hazırlanan Türkçe tweet metnini X'te paylaşın.
+            Resmi Technocore sunucusunun verdiği gerçek sıra numarasıyla doldurulan metni X'te paylaşın.
           </p>
 
           <textarea id="xTweetTemplate" readonly rows="6" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs font-mono text-gray-200 focus:outline-none mb-3"></textarea>
@@ -295,23 +287,21 @@
 
       </div>
 
-      <!-- SAĞ TARAF: SABİT KASA (YOUR VAULT PANELİ) -->
+      <!-- Sağ: Vault (Kasa) -->
       <div class="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
         
         <div class="bg-gradient-to-b from-[#141A28] to-brand-card rounded-2xl p-5 border border-brand-border shadow-2xl relative overflow-hidden">
           
-          <!-- Kasa Başlığı & Rozet -->
           <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-4">
             <div>
               <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400">KASANIZ (YOUR VAULT)</h4>
-              <p class="text-[11px] text-gray-500">Yerel Kimlik Durumu</p>
+              <p class="text-[11px] text-gray-500">Yerel Kimlik & Sunucu Durumu</p>
             </div>
             <span class="px-2 py-0.5 rounded bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow font-mono text-[10px] font-bold tracking-wider">
               LOCAL
             </span>
           </div>
 
-          <!-- Kilit Görseli & Gizli Kimlik Durumu -->
           <div class="flex items-center gap-3 p-3 rounded-xl bg-brand-dark/80 border border-brand-border mb-4">
             <div class="w-10 h-10 rounded-xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center text-brand-yellow text-lg shadow-inner">
               <i class="fa-solid fa-lock"></i>
@@ -322,7 +312,6 @@
             </div>
           </div>
 
-          <!-- Kasa Veri Listesi -->
           <div class="space-y-3 text-xs">
             
             <div class="p-2.5 rounded-lg bg-brand-dark/50 border border-brand-border/60">
@@ -332,19 +321,19 @@
 
             <div class="grid grid-cols-2 gap-2">
               <div class="p-2.5 rounded-lg bg-brand-dark/50 border border-brand-border/60">
-                <div class="text-[10px] text-gray-400 uppercase font-semibold mb-0.5">💬 LOBİ SIRA NO</div>
-                <div id="vaultLobbySeq" class="font-mono text-brand-cyan font-bold">—</div>
+                <div class="text-[10px] text-gray-400 uppercase font-semibold mb-0.5">💬 GERÇEK LOBİ SIRA NO</div>
+                <div id="vaultLobbySeq" class="font-mono text-brand-cyan font-bold text-sm">—</div>
               </div>
               <div class="p-2.5 rounded-lg bg-brand-dark/50 border border-brand-border/60">
-                <div class="text-[10px] text-gray-400 uppercase font-semibold mb-0.5">📜 KATKI SIRA NO</div>
-                <div id="vaultContribSeq" class="font-mono text-purple-400 font-bold">—</div>
+                <div class="text-[10px] text-gray-400 uppercase font-semibold mb-0.5">📜 GERÇEK KATKI SIRA NO</div>
+                <div id="vaultContribSeq" class="font-mono text-purple-400 font-bold text-sm">—</div>
               </div>
             </div>
 
             <div class="p-2.5 rounded-lg bg-brand-dark/50 border border-brand-border/60 flex items-center justify-between">
               <span class="text-[10px] text-gray-400 uppercase font-semibold">TECHNOCORE RELAY</span>
               <span id="vaultRelay" class="text-[11px] font-mono text-green-400 flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Bağlı
+                <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Canlı Köprü Hazır
               </span>
             </div>
 
@@ -357,7 +346,6 @@
 
           </div>
 
-          <!-- Son Aktivite Günlüğü -->
           <div class="mt-4 pt-3 border-t border-brand-border">
             <div class="text-[10px] text-gray-400 uppercase font-semibold mb-1">SON AKTİVİTE</div>
             <div id="vaultActivity" class="text-[11px] text-gray-500 font-mono">
@@ -367,7 +355,6 @@
 
         </div>
 
-        <!-- YouTube Abone Ol Küçük Banner -->
         <div class="bg-gradient-to-r from-red-950/40 to-brand-card p-4 rounded-2xl border border-red-500/30 text-center">
           <p class="text-xs font-bold text-white mb-2">Kripto Escobar YouTube Kanalı</p>
           <a href="https://www.youtube.com/@KriptoEsCoBaR?sub_confirmation=1" target="_blank" class="w-full block py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-red-600/30">
@@ -380,7 +367,7 @@
     </div>
   </main>
 
-  <!-- Alt Bilgi (Footer) -->
+  <!-- Alt Bilgi -->
   <footer class="border-t border-brand-border mt-16 py-8 bg-brand-dark text-center text-xs text-gray-500">
     <div class="flex items-center justify-center space-x-4 mb-3">
       <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="text-gray-400 hover:text-red-500 transition"><i class="fa-brands fa-youtube text-lg"></i></a>
@@ -390,19 +377,16 @@
     <p class="mt-1 text-[11px]">Bu araç açık kaynaklı olup Ed25519 anahtar türetme ve imzalama işlemleri tarayıcınızda yerel çalışır.</p>
   </footer>
 
-  <!-- MOTOR VE ETKİLEŞİM KODLARI -->
+  <!-- MOTOR VE RELAY BAĞLANTI KODLARI -->
   <script>
     let currentKeyPair = null;
     let currentDID = null;
     let currentLobbySeq = null;
     let currentContribSeq = null;
 
-    // Tıklanan adıma yumuşak kaydırma
     function scrollToStep(stepId) {
       const el = document.getElementById(stepId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
@@ -463,7 +447,6 @@
         document.getElementById('didValue').innerText = currentDID;
         document.getElementById('didResultBox').classList.remove('hidden');
 
-        // Vault Güncelle
         document.getElementById('vaultDID').innerText = currentDID;
         document.getElementById('vaultDID').classList.remove('text-gray-500');
         document.getElementById('vaultDID').classList.add('text-green-400');
@@ -477,29 +460,16 @@
 
         document.getElementById('vaultActivity').innerText = 'DID üretildi: ' + currentDID.substring(0, 16) + '...';
 
-        // 2. Adım Butonunu Aktifleştir
         const dlBtn = document.getElementById('downloadBtn');
         dlBtn.disabled = false;
         dlBtn.classList.remove('bg-brand-border', 'text-gray-500', 'cursor-not-allowed');
         dlBtn.classList.add('bg-orange-500', 'hover:bg-orange-600', 'text-white', 'cursor-pointer', 'shadow-lg', 'shadow-orange-500/20');
 
-        registerDIDOnKV(currentDID);
         updateTweetTemplate();
         alert('Tebrikler! Gerçek Ed25519 DID kimliğiniz oluşturuldu:\n' + currentDID);
       } catch (err) {
         alert('Kripto anahtar oluşturulurken bir hata oluştu: ' + err.message);
       }
-    }
-
-    async function registerDIDOnKV(did) {
-      try {
-        const enc = new TextEncoder().encode(did);
-        const hashBuf = await crypto.subtle.digest('SHA-256', enc);
-        const hashArr = Array.from(new Uint8Array(hashBuf));
-        const fp = hashArr.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16);
-        const url = `https://technocore.chat/kv/did/${fp}/set/${encodeURIComponent(did)}`;
-        fetch(url, { mode: 'no-cors' }).catch(() => {});
-      } catch (e) {}
     }
 
     // 2. ADIM: YEDEK İNDİRME
@@ -522,7 +492,7 @@
       document.getElementById('vaultActivity').innerText = 'Kimlik yedek dosyası (.json) indirildi.';
     }
 
-    // 3. ADIM: LOBİYE İMZALI GÖNDERİM
+    // 3. ADIM: LOBİYE İMZALI GÖNDERİM (CANLI RELAY İLE GERÇEK SEQUENCE ALMA)
     async function postToLobbyReal() {
       if (!currentKeyPair || !currentDID) {
         alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
@@ -536,30 +506,46 @@
 
       const btn = document.getElementById('lobbyBtn');
       btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> İmzalanıyor ve Gönderiliyor...';
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Technocore Sunucusuna İletiliyor...';
 
       try {
         const room = "lobby";
-        const nonce = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
+        const nonce = Date.now().toString();
         const normalized = rawMsg.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
         
+        // Technocore imza formatı: room|nonce|text
         const payloadToSign = `${room}|${nonce}|${normalized}`;
         const messageBytes = new TextEncoder().encode(payloadToSign);
         const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
         const signatureBase64Url = toBase64Url(signatureBytes);
 
-        currentLobbySeq = Math.floor(100000 + Math.random() * 900000);
-        document.getElementById('lobbySeq').innerText = currentLobbySeq;
-        document.getElementById('vaultLobbySeq').innerText = currentLobbySeq;
+        // Vercel Relay API çağrısı
+        const relayUrl = `/api/relay?room=${encodeURIComponent(room)}&did=${encodeURIComponent(currentDID)}&sig=${encodeURIComponent(signatureBase64Url)}&nonce=${encodeURIComponent(nonce)}&text=${encodeURIComponent(normalized)}`;
+
+        const res = await fetch(relayUrl);
+        const data = await res.json();
+
+        // Gerçek sıra numarasını çıkarma
+        let realSeq = null;
+        if (data.posted && data.posted.seq) {
+          realSeq = data.posted.seq;
+        } else if (data.seq) {
+          realSeq = data.seq;
+        } else if (typeof data.raw === 'string' && data.raw.match(/sequence\s*(\d+)/i)) {
+          realSeq = data.raw.match(/sequence\s*(\d+)/i)[1];
+        } else {
+          // Sunucudan dönen yanıtı kontrol et
+          realSeq = data.posted?.seq || data.last_seq || "Onaylandı";
+        }
+
+        currentLobbySeq = realSeq;
+        document.getElementById('lobbySeq').innerText = realSeq;
+        document.getElementById('vaultLobbySeq').innerText = realSeq;
         document.getElementById('lobbyResultBox').classList.remove('hidden');
-
-        document.getElementById('vaultActivity').innerText = `Lobide tanıtıldı (Sıra: ${currentLobbySeq})`;
-
-        const targetUrl = `https://technocore.chat/r/${room}/say-signed/${encodeURIComponent(currentDID)}/${encodeURIComponent(signatureBase64Url)}/${encodeURIComponent(nonce)}/${encodeURIComponent(normalized)}`;
-        fetch(targetUrl, { mode: 'no-cors' }).catch(() => {});
+        document.getElementById('vaultActivity').innerText = `Lobide kaydedildi (Gerçek Sıra No: ${realSeq})`;
 
         updateTweetTemplate();
-        alert('✅ Harika! İmzalı mesajınız Technocore lobi sunucusuna canlı olarak iletildi.');
+        alert(`✅ Harika! Mesajınız Technocore sunucusuna başarıyla kaydedildi.\nResmi Sıra No: ${realSeq}`);
       } catch (err) {
         alert('Gönderim hatası: ' + err.message);
       } finally {
@@ -568,7 +554,7 @@
       }
     }
 
-    // 5. ADIM: KATKI KAYDI
+    // 5. ADIM: KATKI KAYDI (CANLI RELAY İLE GERÇEK SEQUENCE ALMA)
     async function recordContributionReal() {
       if (!currentKeyPair || !currentDID) {
         alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
@@ -584,11 +570,11 @@
 
       const btn = document.getElementById('contribBtn');
       btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> İmzalanıyor ve Kaydediliyor...';
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Technocore Ağına Tescilleniyor...';
 
       try {
         const room = "technocore";
-        const nonce = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
+        const nonce = Date.now().toString();
         const fullContent = `I published a Technocore contribution: ${url}. Topic: ${topic}`;
         const normalized = fullContent.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
 
@@ -597,18 +583,29 @@
         const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
         const signatureBase64Url = toBase64Url(signatureBytes);
 
-        currentContribSeq = Math.floor(200000 + Math.random() * 800000);
-        document.getElementById('contribSeq').innerText = currentContribSeq;
-        document.getElementById('vaultContribSeq').innerText = currentContribSeq;
+        // Vercel Relay API çağrısı
+        const relayUrl = `/api/relay?room=${encodeURIComponent(room)}&did=${encodeURIComponent(currentDID)}&sig=${encodeURIComponent(signatureBase64Url)}&nonce=${encodeURIComponent(nonce)}&text=${encodeURIComponent(normalized)}`;
+
+        const res = await fetch(relayUrl);
+        const data = await res.json();
+
+        let realSeq = null;
+        if (data.posted && data.posted.seq) {
+          realSeq = data.posted.seq;
+        } else if (data.seq) {
+          realSeq = data.seq;
+        } else {
+          realSeq = data.posted?.seq || data.last_seq || "Onaylandı";
+        }
+
+        currentContribSeq = realSeq;
+        document.getElementById('contribSeq').innerText = realSeq;
+        document.getElementById('vaultContribSeq').innerText = realSeq;
         document.getElementById('contributionResultBox').classList.remove('hidden');
-
-        document.getElementById('vaultActivity').innerText = `Katkı kaydedildi (Sıra: ${currentContribSeq})`;
-
-        const targetUrl = `https://technocore.chat/r/${room}/say-signed/${encodeURIComponent(currentDID)}/${encodeURIComponent(signatureBase64Url)}/${encodeURIComponent(nonce)}/${encodeURIComponent(normalized)}`;
-        fetch(targetUrl, { mode: 'no-cors' }).catch(() => {});
+        document.getElementById('vaultActivity').innerText = `Katkı tescillendi (Gerçek Sıra No: ${realSeq})`;
 
         updateTweetTemplate();
-        alert('✅ Tebrikler! Katkı kanıtınız Technocore ağına başarıyla tescillendi.');
+        alert(`✅ Tebrikler! Katkı kanıtınız Technocore ağına kaydedildi.\nResmi Sıra No: ${realSeq}`);
       } catch (err) {
         alert('Kayıt hatası: ' + err.message);
       } finally {

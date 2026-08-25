@@ -74,7 +74,6 @@ function postToLobby() {
     return;
   }
 
-  // Simüle edilen sıra numarası (Sequence)
   currentLobbySeq = Math.floor(100000 + Math.random() * 900000);
   document.getElementById('lobbySeq').innerText = currentLobbySeq;
   document.getElementById('lobbyResultBox').classList.remove('hidden');
@@ -103,14 +102,14 @@ function recordContribution() {
   updateTweetTemplate();
 }
 
-// 4. Adım: X Tweet Şablonunu Güncelleme
+// 4. Adım: Türkçe X Tweet Şablonunu Güncelleme
 function updateTweetTemplate() {
-  const did = currentIdentity ? currentIdentity.did : 'YOUR_PUBLIC_DID';
-  const url = document.getElementById('contributionUrl')?.value || 'https://x.com/KriptoEsCoBaR';
-  const topic = document.getElementById('contributionTopic')?.value || 'Technocore Airdrop Guide by @KriptoEsCoBaR';
-  const seq = currentContribSeq || currentLobbySeq || 'SEQUENCE_NUM';
+  const did = currentIdentity ? currentIdentity.did : 'DID_KIMLIGINIZ';
+  const url = document.getElementById('contributionUrl')?.value || 'https://x.com/kriptoescobar0';
+  const topic = document.getElementById('contributionTopic')?.value || 'Technocore Airdrop Rehberi';
+  const seq = currentContribSeq || currentLobbySeq || 'SIRA_NUMARANIZ';
 
-  const tweetText = `I published a useful tutorial for Technocore by @flop_labs !\n\nIt helps Web3 users understand ${topic}.\n\n🔗 Contribution: ${url}\n🆔 Agent DID: ${did}\n📜 Signed Technocore record: room technocore, sequence ${seq}\n\nBuilt via @KriptoEsCoBaR suite 🚀`;
+  const tweetText = `@flop_labs Technocore için hazırladığım Türkçe rehber ve katkımı kaydettim! 🚀\n\n📌 Katkı Konusu: ${topic}\n🔗 İçerik Linki: ${url}\n🆔 Ajan DID: ${did}\n📜 İmzalı Technocore Kaydı: oda technocore, sıra no: ${seq}\n\nRehber ve Araç: @kriptoescobar0 🔥 #Technocore #FLOP`;
 
   document.getElementById('xTweetTemplate').value = tweetText;
 }

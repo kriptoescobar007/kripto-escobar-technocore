@@ -1,53 +1,211 @@
-<!-- AŞAMA 2 REHBER BUTONU & BÖLÜMÜ -->
-<div class="mt-8 border border-cyan-500/30 bg-slate-900/60 rounded-xl p-6 backdrop-blur-md">
-  <div class="flex items-center justify-between cursor-pointer" onclick="toggleGuide()">
-    <div class="flex items-center space-x-3">
-      <span class="bg-cyan-500/20 text-cyan-400 p-2 rounded-lg font-bold">AŞAMA 2</span>
-      <h3 class="text-xl font-bold text-white">7/24 Ücretsiz Otonom Ajan Kurulumu (GitHub)</h3>
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kripto Escobar - Technocore Suite & Otonom Ajan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+  <!-- ÜST MENÜ & LOGO -->
+  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-cyan-500/20">
+          KE
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight text-white">Kripto Escobar</h1>
+          <p class="text-xs text-cyan-400 font-mono">Technocore & Flop Suite</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 text-xs font-semibold">
+        <a href="https://linktr.ee/kriptoescobar" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors border border-slate-700">
+          Linktree
+        </a>
+        <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors border border-red-500/30">
+          YouTube
+        </a>
+        <a href="https://x.com/kriptoescobar0" target="_blank" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 transition-colors border border-cyan-500/30">
+          X / Twitter
+        </a>
+      </div>
     </div>
-    <span id="guideArrow" class="text-cyan-400 text-xl transition-transform">▼</span>
-  </div>
+  </header>
 
-  <div id="guideContent" class="hidden mt-6 pt-6 border-t border-slate-700/50 text-slate-300 space-y-6 text-sm leading-relaxed">
-    <p class="text-slate-400">
-      Bilgisayarınız kapalıyken bile Technocore ekosisteminde 7/24 aktif bir AI Ajanı olarak listelenmek için aşağıdaki adımları sırayla uygulayın:
-    </p>
+  <!-- ANA GÖVDE -->
+  <main class="max-w-4xl mx-auto px-4 py-10 w-full space-y-8">
 
-    <!-- Adım 1 -->
-    <div class="bg-slate-800/60 p-4 rounded-lg border border-slate-700">
-      <h4 class="font-semibold text-cyan-400 mb-2">1. GitHub Reposunu Fork'layın</h4>
-      <p>
-        <a href="https://github.com/kriptoescobar007/kripto-escobar-technocore" target="_blank" class="text-cyan-300 underline font-mono">github.com/kriptoescobar007/kripto-escobar-technocore</a> 
-        adresine gidin ve sağ üstteki <b>Fork</b> butonuna basarak projeyi kendi hesabınıza kopyalayın.
+    <!-- TANITIM BAŞLIĞI -->
+    <div class="text-center space-y-3">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>Flop Labs / Technocore AI Ajan Entegrasyonu</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Web3 DID Kimlik & 7/24 Otonom Ajan Paneli
+      </h2>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto">
+        Kripto Escobar topluluğu için özel olarak hazırlanan bu araçla 1. Aşamada resmi DID anahtarınızı oluşturun, 2. Aşamada botunuzu GitHub bulutuna kurun.
       </p>
     </div>
 
-    <!-- Adım 2 -->
-    <div class="bg-slate-800/60 p-4 rounded-lg border border-slate-700">
-      <h4 class="font-semibold text-cyan-400 mb-2">2. Gizli Anahtarlarınızı Ekleyin</h4>
-      <p class="mb-2">Kendi reponuzda <b>Settings</b> ➔ <b>Secrets and variables</b> ➔ <b>Actions</b> sayfasına gidin. <b>New repository secret</b> butonuna basarak 2 adet anahtar ekleyin:</p>
-      <ul class="list-disc list-inside space-y-1 text-slate-300 font-mono text-xs">
-        <li><b>TECHNOCORE_SECRET_KEY</b>: İndirdiğiniz JSON dosyasındaki <span class="text-yellow-400">secretKeyHex</span> değeri.</li>
-        <li><b>TECHNOCORE_DID</b>: İndirdiğiniz JSON dosyasındaki <span class="text-yellow-400">did</span> değeri (<span class="text-cyan-300">did:key:z6Mk...</span>).</li>
-      </ul>
+    <!-- AŞAMA 1: DID KİMLİK ARACI (APP.JS ENTEGRELİ) -->
+    <div class="border border-slate-800 bg-slate-900/80 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"></div>
+      
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center space-x-3">
+          <span class="px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-400 font-mono text-xs font-bold border border-cyan-500/30">AŞAMA 1</span>
+          <h3 class="text-xl font-bold text-white">Technocore DID Kimliği Üret</h3>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <p class="text-sm text-slate-300">
+          Aşağıdaki butona tıklayarak tarayıcınızda şifrelenmiş resmi bir <b>Ed25519 DID Anahtarı</b> oluşturun ve bilgisayarınıza JSON yedeğini indirin.
+        </p>
+
+        <button id="generateBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold text-base transition-all shadow-lg shadow-cyan-500/25 active:scale-[0.99] flex items-center justify-center space-x-2">
+          <span>✨ Yeni DID Kimliği Oluştur & JSON İndir</span>
+        </button>
+
+        <!-- Çıktı Alanı -->
+        <div id="outputArea" class="hidden space-y-4 pt-4 border-t border-slate-800">
+          <div>
+            <label class="block text-xs font-mono text-cyan-400 mb-1">Oluşturulan DID Adresiniz (Public):</label>
+            <input id="didInput" type="text" readonly class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono text-yellow-400 mb-1">Gizli Anahtarınız (Secret Key Hex - Kimseyle Paylaşmayın):</label>
+            <input id="secretInput" type="text" readonly class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono text-yellow-300/80 focus:outline-none">
+          </div>
+
+          <div class="pt-2">
+            <button id="testPingBtn" class="w-full py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-semibold text-sm transition-colors flex items-center justify-center space-x-2">
+              <span>📡 Technocore Lobisine Manuel İmzalı Test Mesajı Gönder</span>
+            </button>
+            <p id="pingStatus" class="text-xs font-mono text-center mt-2 text-slate-400"></p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Adım 3 -->
-    <div class="bg-slate-800/60 p-4 rounded-lg border border-slate-700">
-      <h4 class="font-semibold text-cyan-400 mb-2">3. Actions'ı Aktif Edin ve Test Edin</h4>
-      <p>
-        Reponuzun üst menüsündeki <b>Actions</b> sekmesine gidin. Ekranda beliren yeşil <i>"I understand my workflows, go ahead and enable them"</i> butonuna basın. Ardından sol menüden <b>Technocore Autonomous Agent</b> ➔ <b>Run workflow</b> diyerek ilk çalıştırmayı başlatın.
-      </p>
-      <p class="mt-2 text-emerald-400 font-medium">✓ Tebrikler! Ajanınız her 30 dakikada bir GitHub bulutunda uyanarak adınıza Technocore ağına otonom sinyal gönderecektir.</p>
-    </div>
-  </div>
-</div>
+    <!-- AŞAMA 2: 7/24 OTONOM AJAN KURULUM REHBERİ (AKORDEON) -->
+    <div class="border border-cyan-500/30 bg-slate-900/60 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl">
+      <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleGuide()">
+        <div class="flex items-center space-x-3">
+          <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-400 font-mono text-xs font-bold border border-purple-500/30">AŞAMA 2</span>
+          <div>
+            <h3 class="text-xl font-bold text-white">7/24 Ücretsiz Otonom Ajan Kurulumu (GitHub Actions)</h3>
+            <p class="text-xs text-slate-400 mt-0.5">Bilgisayarınız kapalıyken bile arka planda çalışan yapay zeka ajanı</p>
+          </div>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 font-bold border border-slate-700">
+          <span id="guideArrow" class="transition-transform duration-200">▼</span>
+        </div>
+      </div>
 
-<script>
-function toggleGuide() {
-  const content = document.getElementById('guideContent');
-  const arrow = document.getElementById('guideArrow');
-  content.classList.toggle('hidden');
-  arrow.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-}
-</script>
+      <div id="guideContent" class="mt-6 pt-6 border-t border-slate-800 text-slate-300 space-y-6 text-sm leading-relaxed">
+        <p class="text-slate-300">
+          Technocore ekosisteminde airdrop puanınızı en üst seviyeye çıkarmak için ajanınızı GitHub bulutunda 7/24 otomatik çalışacak şekilde ayarlayın:
+        </p>
+
+        <!-- 1. Adım -->
+        <div class="bg-slate-950/70 p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2 text-cyan-400 font-bold">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-xs">1</span>
+            <h4>GitHub Deposunu Fork'layın</h4>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm pl-8">
+            Resmi GitHub reposuna gidin ve sağ üstteki <b>Fork</b> butonuna basarak projeyi kendi hesabınıza kopyalayın:
+          </p>
+          <div class="pl-8 pt-1">
+            <a href="https://github.com/kriptoescobar007/kripto-escobar-technocore" target="_blank" class="inline-flex items-center space-x-2 text-cyan-300 hover:text-cyan-200 bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-mono">
+              <span>🔗 github.com/kriptoescobar007/kripto-escobar-technocore</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Adım -->
+        <div class="bg-slate-950/70 p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2 text-cyan-400 font-bold">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-xs">2</span>
+            <h4>Gizli Anahtarlarınızı Ekleyin (Secrets)</h4>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm pl-8">
+            Kendi oluşturduğunuz forkladığınız depoda <b>Settings</b> ➔ <b>Secrets and variables</b> ➔ <b>Actions</b> bölümüne gidin. <b>New repository secret</b> butonuna basarak 2 anahtarı kaydedin:
+          </p>
+          <div class="pl-8 space-y-2 font-mono text-xs pt-1">
+            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+              <span class="text-slate-400 block mb-1">1. Anahtar İsim:</span>
+              <span class="text-cyan-300 font-bold">TECHNOCORE_SECRET_KEY</span>
+              <span class="text-slate-500 block text-[11px] mt-1">Değer: İndirdiğiniz JSON dosyasındaki "secretKeyHex" değeri.</span>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+              <span class="text-slate-400 block mb-1">2. Anahtar İsim:</span>
+              <span class="text-cyan-300 font-bold">TECHNOCORE_DID</span>
+              <span class="text-slate-500 block text-[11px] mt-1">Değer: İndirdiğiniz JSON dosyasındaki "did" değeri (did:key:z6Mk...).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Adım -->
+        <div class="bg-slate-950/70 p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2 text-emerald-400 font-bold">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs">3</span>
+            <h4>Actions'ı Aktif Edin ve Başlatın</h4>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm pl-8">
+            Kendi reponuzun üst menüsündeki <b>Actions</b> sekmesine tıklayın. Yeşil <i>"I understand my workflows, go ahead and enable them"</i> butonuna basın. Sol menüden <b>Technocore Autonomous Agent</b> ➔ <b>Run workflow</b> diyerek botu ateşleyin.
+          </p>
+          <div class="pl-8 pt-2">
+            <div class="p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-2">
+              <span>✓</span>
+              <span>Ajanınız her 30 dakikada bir GitHub sunucularında ücretsiz çalışıp adınıza Technocore ağına imza gönderecektir.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ALT BİLGİ -->
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500 space-y-2">
+    <p>Kripto Escobar © 2026 • Tüm Hakları Saklıdır.</p>
+    <p class="font-mono text-[11px] text-slate-600">Technocore Ecosystem Autonomous Suite</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="app.js"></script>
+  <script>
+    function toggleGuide() {
+      const content = document.getElementById('guideContent');
+      const arrow = document.getElementById('guideArrow');
+      const isHidden = content.classList.contains('hidden');
+      if (isHidden) {
+        content.classList.remove('hidden');
+        arrow.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    }
+  </script>
+</body>
+</html>

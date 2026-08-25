@@ -63,7 +63,7 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans selection:bg-brand-yellow selection:text-black">
 
-  <!-- Üst Menü -->
+  <!-- Üst Menü (Header) -->
   <header class="border-b border-brand-border bg-brand-dark/90 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -103,13 +103,13 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-amber-300 to-brand-cyan">Katkını imzala.</span>
       </h1>
       <p class="text-gray-400 max-w-2xl text-sm sm:text-base mb-6 leading-relaxed">
-        Tarayıcınızda yerel Ed25519 <code class="text-brand-yellow font-mono text-xs bg-brand-card px-1.5 py-0.5 rounded border border-brand-border">did:key:z6Mk...</code> kimliğinizi oluşturun, Technocore sunucusuna doğrudan imzalı mesaj gönderin ve gerçek sıra numaranızı alın.
+        Tarayıcınızda yerel Ed25519 <code class="text-brand-yellow font-mono text-xs bg-brand-card px-1.5 py-0.5 rounded border border-brand-border">did:key:z6Mk...</code> kimliğinizi oluşturun veya yedek dosyanızı yükleyin. Technocore sunucusuna doğrudan imzalı mesaj gönderin ve tescilli sıra numaranızı alın.
       </p>
 
       <div class="flex flex-wrap gap-2 text-[11px] font-mono">
         <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">GERÇEK ED25519</span>
-        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">CANLI API RELAY</span>
-        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">GERÇEK SEQUENCE NO</span>
+        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">OTURUM HAFIZASI</span>
+        <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-gray-300">JSON YEDEKTEN YÜKLEME</span>
         <span class="px-2.5 py-1 rounded-md bg-brand-card border border-brand-border text-brand-yellow">%100 ÜCRETSİZ</span>
       </div>
     </div>
@@ -118,7 +118,7 @@
     <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-8">
       <button onclick="scrollToStep('step-1')" class="step-tab tab-active p-3 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-cardHover transition text-center group">
         <div class="text-[11px] font-mono text-gray-400 group-hover:text-brand-yellow">01</div>
-        <div class="text-xs font-bold text-white uppercase tracking-wider mt-0.5">Üret</div>
+        <div class="text-xs font-bold text-white uppercase tracking-wider mt-0.5">Üret / Yükle</div>
       </button>
       <button onclick="scrollToStep('step-2')" class="step-tab p-3 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-cardHover transition text-center group">
         <div class="text-[11px] font-mono text-gray-400 group-hover:text-brand-yellow">02</div>
@@ -148,28 +148,54 @@
       <!-- Sol: Adımlar -->
       <div class="lg:col-span-8 space-y-6">
 
-        <!-- ADIM 1 -->
+        <!-- ADIM 1: YENİ ÜRET VEYA MEVCUT JSON YÜKLE -->
         <div id="step-1" class="bg-brand-card rounded-2xl p-6 neon-border">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="w-7 h-7 rounded-lg bg-brand-yellow text-black font-bold flex items-center justify-center text-xs">1</span>
-            <h3 class="text-lg font-bold text-white">Technocore DID Kimliğini Oluştur</h3>
-          </div>
-          <p class="text-xs text-gray-400 mb-4">
-            Benzersiz bir <code class="text-brand-yellow font-mono">Ed25519</code> anahtarı üretin. Açık anahtarınız otomatik olarak <code class="text-green-400 font-mono">did:key:z6Mk...</code> kimliğinize dönüşür.
-          </p>
-
-          <div class="space-y-3 mb-4">
-            <input type="password" id="passphrase" placeholder="Güçlü parola · en az 12 karakter..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow">
-            <input type="password" id="passphraseConfirm" placeholder="Parolayı tekrar yazın..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow">
+          <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-lg bg-brand-yellow text-black font-bold flex items-center justify-center text-xs">1</span>
+              <h3 class="text-lg font-bold text-white">Technocore DID Kimliği Belirle</h3>
+            </div>
+            <span class="text-xs text-green-400 font-mono">Ed25519 • did:key:z6Mk...</span>
           </div>
 
-          <button onclick="generateRealIdentity()" class="px-6 py-3 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-yellow-500/20">
-            <i class="fa-solid fa-key"></i> Kimliğimi Oluştur (Create Identity)
-          </button>
+          <!-- Seçenek Sekmeleri -->
+          <div class="flex gap-2 mb-4 p-1 bg-brand-dark rounded-xl border border-brand-border text-xs font-semibold">
+            <button id="tabNewBtn" onclick="switchIdentityMode('new')" class="flex-1 py-2 rounded-lg bg-brand-yellow text-black transition">
+              <i class="fa-solid fa-plus mr-1"></i> Yeni Kimlik Oluştur
+            </button>
+            <button id="tabImportBtn" onclick="switchIdentityMode('import')" class="flex-1 py-2 rounded-lg text-gray-400 hover:text-white transition">
+              <i class="fa-solid fa-file-import mr-1"></i> Mevcut .JSON Yedeğini Yükle
+            </button>
+          </div>
+
+          <!-- Mod 1: Sıfırdan Üretim -->
+          <div id="modeNewArea">
+            <p class="text-xs text-gray-400 mb-4">
+              İlk defa işlem yapıyorsanız güçlü bir parola belirleyip yeni bir <code class="text-brand-yellow font-mono">Ed25519</code> anahtarı üretin.
+            </p>
+            <div class="space-y-3 mb-4">
+              <input type="password" id="passphrase" placeholder="Güçlü parola · en az 12 karakter..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow">
+              <input type="password" id="passphraseConfirm" placeholder="Parolayı tekrar yazın..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow">
+            </div>
+            <button onclick="generateRealIdentity()" class="px-6 py-3 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-yellow-500/20">
+              <i class="fa-solid fa-key"></i> Yeni Kimliğimi Oluştur
+            </button>
+          </div>
+
+          <!-- Mod 2: Dosyadan Yükleme -->
+          <div id="modeImportArea" class="hidden">
+            <p class="text-xs text-gray-400 mb-4">
+              Daha önce indirdiğiniz <code class="text-brand-yellow font-mono">.json</code> yedek dosyanızı seçerek aynı kimliğinize anında geri dönün.
+            </p>
+            <input type="file" id="jsonFileInput" accept=".json" class="hidden" onchange="importIdentityFromFile(event)">
+            <button onclick="document.getElementById('jsonFileInput').click()" class="px-6 py-3 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
+              <i class="fa-solid fa-folder-open"></i> .JSON Yedek Dosyasını Seç & Yükle
+            </button>
+          </div>
 
           <div id="didResultBox" class="mt-4 hidden">
             <div class="bg-brand-dark p-3.5 rounded-xl border border-green-500/30 text-xs">
-              <span class="text-gray-400 block mb-1">Oluşturulan Açık DID:</span>
+              <span class="text-gray-400 block mb-1">Aktif DID Kimliğiniz:</span>
               <div class="flex items-center justify-between gap-2">
                 <code id="didValue" class="text-green-400 font-mono break-all select-all"></code>
                 <button onclick="copyToClipboard('didValue')" class="px-2.5 py-1 bg-brand-border hover:bg-gray-700 text-white rounded text-xs">Kopyala</button>
@@ -185,7 +211,7 @@
             <h3 class="text-lg font-bold text-white">Kimliğini Güvenle Sakla (Backup)</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Kimliğinizi içeren şifreli yedek dosyasını indirin.
+            Kimliğinizi içeren şifreli yedek dosyasını indirin ve güvenle saklayın.
           </p>
 
           <button id="downloadBtn" onclick="downloadBackup()" disabled class="px-6 py-3 bg-brand-border text-gray-500 font-bold rounded-xl text-sm transition flex items-center gap-2 cursor-not-allowed">
@@ -210,8 +236,13 @@
           </button>
 
           <div id="lobbyResultBox" class="mt-4 hidden">
-            <div class="bg-green-950/50 border border-green-500/40 rounded-xl p-3.5 text-xs text-green-300">
-              ✅ Technocore sunucusuna başarıyla kaydedildi! Gerçek Sıra No: <strong id="lobbySeq" class="text-white font-mono text-sm"></strong>
+            <div class="bg-green-950/50 border border-green-500/40 rounded-xl p-3.5 text-xs text-green-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+              <div>
+                ✅ Technocore sunucusuna başarıyla kaydedildi! Sıra No: <strong id="lobbySeq" class="text-white font-mono text-sm"></strong>
+              </div>
+              <a id="lobbyDirectVerifyLink" href="#" target="_blank" class="px-3 py-1.5 bg-green-900 hover:bg-green-800 text-white font-bold rounded-lg text-xs flex items-center gap-1">
+                <i class="fa-solid fa-magnifying-glass"></i> Sıra Numarasını Sorgula
+              </a>
             </div>
           </div>
         </div>
@@ -223,11 +254,11 @@
             <h3 class="text-lg font-bold text-white">Faydalı İçerik / Katkı Oluştur</h3>
           </div>
           <p class="text-xs text-gray-400 mb-4">
-            Technocore lobisini açarak mesajınızı ve DID numaranızı doğrudan canlı yayında kontrol edebilirsiniz.
+            Flop Labs veya Technocore hakkında bir X tweet'i, video veya rehber hazırlayıp yayınlayın.
           </p>
 
           <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-teal-600/20">
-            <i class="fa-solid fa-comments"></i> Technocore Lobisini Canlı Aç & Doğrula <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            <i class="fa-solid fa-comments"></i> Technocore Lobisini Aç <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>
 
@@ -257,8 +288,13 @@
           </button>
 
           <div id="contributionResultBox" class="mt-4 hidden">
-            <div class="bg-purple-950/50 border border-purple-500/40 rounded-xl p-3.5 text-xs text-purple-300">
-              ✅ Katkınız kaydedildi! Gerçek Sıra No: <strong id="contribSeq" class="text-white font-mono text-sm"></strong>
+            <div class="bg-purple-950/50 border border-purple-500/40 rounded-xl p-3.5 text-xs text-purple-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+              <div>
+                ✅ Katkınız kaydedildi! Sıra No: <strong id="contribSeq" class="text-white font-mono text-sm"></strong>
+              </div>
+              <a id="contribDirectVerifyLink" href="#" target="_blank" class="px-3 py-1.5 bg-purple-900 hover:bg-purple-800 text-white font-bold rounded-lg text-xs flex items-center gap-1">
+                <i class="fa-solid fa-magnifying-glass"></i> Katkı Sıra No Sorgula
+              </a>
             </div>
           </div>
         </div>
@@ -346,7 +382,15 @@
 
           </div>
 
-          <div class="mt-4 pt-3 border-t border-brand-border">
+          <!-- Oturumu Sıfırla Butonu -->
+          <div class="mt-4 pt-3 border-t border-brand-border flex items-center justify-between">
+            <div class="text-[10px] text-gray-400 uppercase font-semibold">OTURUM</div>
+            <button onclick="clearStoredIdentity()" class="text-[11px] text-red-400 hover:text-red-300 transition flex items-center gap-1">
+              <i class="fa-solid fa-power-off text-xs"></i> Kimliği Sıfırla
+            </button>
+          </div>
+
+          <div class="mt-2">
             <div class="text-[10px] text-gray-400 uppercase font-semibold mb-1">SON AKTİVİTE</div>
             <div id="vaultActivity" class="text-[11px] text-gray-500 font-mono">
               Henüz işlem yapılmadı.
@@ -389,6 +433,25 @@
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
+    function switchIdentityMode(mode) {
+      const tabNew = document.getElementById('tabNewBtn');
+      const tabImport = document.getElementById('tabImportBtn');
+      const areaNew = document.getElementById('modeNewArea');
+      const areaImport = document.getElementById('modeImportArea');
+
+      if (mode === 'new') {
+        tabNew.className = "flex-1 py-2 rounded-lg bg-brand-yellow text-black transition";
+        tabImport.className = "flex-1 py-2 rounded-lg text-gray-400 hover:text-white transition";
+        areaNew.classList.remove('hidden');
+        areaImport.classList.add('hidden');
+      } else {
+        tabImport.className = "flex-1 py-2 rounded-lg bg-brand-cyan text-black transition";
+        tabNew.className = "flex-1 py-2 rounded-lg text-gray-400 hover:text-white transition";
+        areaImport.classList.remove('hidden');
+        areaNew.classList.add('hidden');
+      }
+    }
+
     const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     function toBase58(bytes) {
       let zeroes = 0;
@@ -420,7 +483,11 @@
       return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     }
 
-    // 1. ADIM: DID ÜRETİMİ
+    function fromHexString(hexString) {
+      return new Uint8Array(hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+    }
+
+    // 1. ADIM: SIFIRDAN DID ÜRETİMİ
     function generateRealIdentity() {
       const pass = document.getElementById('passphrase').value;
       const passConfirm = document.getElementById('passphraseConfirm').value;
@@ -444,31 +511,116 @@
 
         currentDID = 'did:key:z' + toBase58(combined);
 
-        document.getElementById('didValue').innerText = currentDID;
-        document.getElementById('didResultBox').classList.remove('hidden');
+        // Tarayıcıya kaydet
+        saveIdentityToStorage();
 
-        document.getElementById('vaultDID').innerText = currentDID;
-        document.getElementById('vaultDID').classList.remove('text-gray-500');
-        document.getElementById('vaultDID').classList.add('text-green-400');
-        document.getElementById('vaultSecretStatus').innerText = 'Ed25519 Anahtarı Üretildi (Aktif)';
-        document.getElementById('vaultSecretStatus').classList.remove('text-gray-300');
-        document.getElementById('vaultSecretStatus').classList.add('text-brand-yellow');
-        
-        const badge = document.getElementById('vaultStatusBadge');
-        badge.innerText = 'Aktif';
-        badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-green-950 text-green-400 border border-green-500/30';
-
-        document.getElementById('vaultActivity').innerText = 'DID üretildi: ' + currentDID.substring(0, 16) + '...';
-
-        const dlBtn = document.getElementById('downloadBtn');
-        dlBtn.disabled = false;
-        dlBtn.classList.remove('bg-brand-border', 'text-gray-500', 'cursor-not-allowed');
-        dlBtn.classList.add('bg-orange-500', 'hover:bg-orange-600', 'text-white', 'cursor-pointer', 'shadow-lg', 'shadow-orange-500/20');
-
+        applyIdentityUI(currentDID);
         updateTweetTemplate();
         alert('Tebrikler! Gerçek Ed25519 DID kimliğiniz oluşturuldu:\n' + currentDID);
       } catch (err) {
         alert('Kripto anahtar oluşturulurken bir hata oluştu: ' + err.message);
+      }
+    }
+
+    // MEVCUT .JSON YEDEĞİNDEN YÜKLEME
+    function importIdentityFromFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const json = JSON.parse(e.target.result);
+          if (!json.secretKeyHex || !json.did) {
+            alert('Geçersiz kimlik dosyası! Dosyada did veya secretKeyHex bulunamadı.');
+            return;
+          }
+
+          const secretBytes = fromHexString(json.secretKeyHex);
+          if (secretBytes.length !== 64) {
+            alert('Geçersiz anahtar uzunluğu!');
+            return;
+          }
+
+          currentKeyPair = {
+            secretKey: secretBytes,
+            publicKey: secretBytes.slice(32)
+          };
+          currentDID = json.did;
+
+          // Tarayıcıya kaydet
+          saveIdentityToStorage();
+
+          applyIdentityUI(currentDID);
+          updateTweetTemplate();
+          alert('✅ Kimliğiniz başarıyla yüklendi:\n' + currentDID);
+        } catch (err) {
+          alert('Dosya okuma hatası: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // UI Güncelleme Fonksiyonu
+    function applyIdentityUI(did) {
+      document.getElementById('didValue').innerText = did;
+      document.getElementById('didResultBox').classList.remove('hidden');
+
+      document.getElementById('vaultDID').innerText = did;
+      document.getElementById('vaultDID').classList.remove('text-gray-500');
+      document.getElementById('vaultDID').classList.add('text-green-400');
+      document.getElementById('vaultSecretStatus').innerText = 'Ed25519 Anahtarı Aktif (Yüklü)';
+      document.getElementById('vaultSecretStatus').classList.remove('text-gray-300');
+      document.getElementById('vaultSecretStatus').classList.add('text-brand-yellow');
+      
+      const badge = document.getElementById('vaultStatusBadge');
+      badge.innerText = 'Aktif';
+      badge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-green-950 text-green-400 border border-green-500/30';
+
+      document.getElementById('vaultActivity').innerText = 'DID aktif: ' + did.substring(0, 16) + '...';
+
+      const dlBtn = document.getElementById('downloadBtn');
+      dlBtn.disabled = false;
+      dlBtn.classList.remove('bg-brand-border', 'text-gray-500', 'cursor-not-allowed');
+      dlBtn.classList.add('bg-orange-500', 'hover:bg-orange-600', 'text-white', 'cursor-pointer', 'shadow-lg', 'shadow-orange-500/20');
+    }
+
+    // LocalStorage İşlemleri
+    function saveIdentityToStorage() {
+      if (!currentKeyPair || !currentDID) return;
+      const secretHex = Array.from(currentKeyPair.secretKey).map(b => b.toString(16).padStart(2, '0')).join('');
+      const dataObj = {
+        did: currentDID,
+        secretKeyHex: secretHex,
+        client: "Kripto Escobar Technocore Suite",
+        createdAt: new Date().toISOString()
+      };
+      localStorage.setItem('kripto_escobar_saved_identity', JSON.stringify(dataObj));
+    }
+
+    function loadIdentityFromStorage() {
+      const saved = localStorage.getItem('kripto_escobar_saved_identity');
+      if (!saved) return;
+      try {
+        const json = JSON.parse(saved);
+        if (json.secretKeyHex && json.did) {
+          const secretBytes = fromHexString(json.secretKeyHex);
+          currentKeyPair = {
+            secretKey: secretBytes,
+            publicKey: secretBytes.slice(32)
+          };
+          currentDID = json.did;
+          applyIdentityUI(currentDID);
+          updateTweetTemplate();
+          document.getElementById('vaultActivity').innerText = 'Önceki oturum otomatik yüklendi.';
+        }
+      } catch (e) {}
+    }
+
+    function clearStoredIdentity() {
+      if (confirm('Mevcut kimlik oturumunu sıfırlamak istediğinize emin misiniz? (Lütfen .json yedeğinizi indirdiğinizden emin olun)')) {
+        localStorage.removeItem('kripto_escobar_saved_identity');
+        location.reload();
       }
     }
 
@@ -492,10 +644,10 @@
       document.getElementById('vaultActivity').innerText = 'Kimlik yedek dosyası (.json) indirildi.';
     }
 
-    // 3. ADIM: LOBİYE İMZALI GÖNDERİM (CANLI RELAY İLE GERÇEK SEQUENCE ALMA)
+    // 3. ADIM: LOBİYE İMZALI GÖNDERİM
     async function postToLobbyReal() {
       if (!currentKeyPair || !currentDID) {
-        alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
+        alert('Önce 1. Adımdan bir DID Kimliği belirlemelisiniz!');
         return;
       }
       const rawMsg = document.getElementById('introMessage').value.trim();
@@ -513,34 +665,32 @@
         const nonce = Date.now().toString();
         const normalized = rawMsg.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
         
-        // Technocore imza formatı: room|nonce|text
         const payloadToSign = `${room}|${nonce}|${normalized}`;
         const messageBytes = new TextEncoder().encode(payloadToSign);
         const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
         const signatureBase64Url = toBase64Url(signatureBytes);
 
-        // Vercel Relay API çağrısı
         const relayUrl = `/api/relay?room=${encodeURIComponent(room)}&did=${encodeURIComponent(currentDID)}&sig=${encodeURIComponent(signatureBase64Url)}&nonce=${encodeURIComponent(nonce)}&text=${encodeURIComponent(normalized)}`;
 
         const res = await fetch(relayUrl);
         const data = await res.json();
 
-        // Gerçek sıra numarasını çıkarma
         let realSeq = null;
         if (data.posted && data.posted.seq) {
           realSeq = data.posted.seq;
         } else if (data.seq) {
           realSeq = data.seq;
-        } else if (typeof data.raw === 'string' && data.raw.match(/sequence\s*(\d+)/i)) {
-          realSeq = data.raw.match(/sequence\s*(\d+)/i)[1];
         } else {
-          // Sunucudan dönen yanıtı kontrol et
           realSeq = data.posted?.seq || data.last_seq || "Onaylandı";
         }
 
         currentLobbySeq = realSeq;
         document.getElementById('lobbySeq').innerText = realSeq;
         document.getElementById('vaultLobbySeq').innerText = realSeq;
+        
+        const verifySeq = typeof realSeq === 'number' ? Math.max(1, realSeq - 2) : 1;
+        document.getElementById('lobbyDirectVerifyLink').href = `https://technocore.chat/r/lobby?since=${verifySeq}`;
+
         document.getElementById('lobbyResultBox').classList.remove('hidden');
         document.getElementById('vaultActivity').innerText = `Lobide kaydedildi (Gerçek Sıra No: ${realSeq})`;
 
@@ -554,10 +704,10 @@
       }
     }
 
-    // 5. ADIM: KATKI KAYDI (CANLI RELAY İLE GERÇEK SEQUENCE ALMA)
+    // 5. ADIM: KATKI KAYDI
     async function recordContributionReal() {
       if (!currentKeyPair || !currentDID) {
-        alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
+        alert('Önce 1. Adımdan bir DID Kimliği belirlemelisiniz!');
         return;
       }
       const url = document.getElementById('contributionUrl').value.trim();
@@ -583,7 +733,6 @@
         const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
         const signatureBase64Url = toBase64Url(signatureBytes);
 
-        // Vercel Relay API çağrısı
         const relayUrl = `/api/relay?room=${encodeURIComponent(room)}&did=${encodeURIComponent(currentDID)}&sig=${encodeURIComponent(signatureBase64Url)}&nonce=${encodeURIComponent(nonce)}&text=${encodeURIComponent(normalized)}`;
 
         const res = await fetch(relayUrl);
@@ -601,6 +750,10 @@
         currentContribSeq = realSeq;
         document.getElementById('contribSeq').innerText = realSeq;
         document.getElementById('vaultContribSeq').innerText = realSeq;
+
+        const verifySeq = typeof realSeq === 'number' ? Math.max(1, realSeq - 2) : 1;
+        document.getElementById('contribDirectVerifyLink').href = `https://technocore.chat/r/technocore?since=${verifySeq}`;
+
         document.getElementById('contributionResultBox').classList.remove('hidden');
         document.getElementById('vaultActivity').innerText = `Katkı tescillendi (Gerçek Sıra No: ${realSeq})`;
 
@@ -647,6 +800,7 @@
     }
 
     window.onload = function() {
+      loadIdentityFromStorage();
       updateTweetTemplate();
     };
   </script>

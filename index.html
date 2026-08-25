@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kripto Escobar | Technocore & Flop Labs Airdrop Aracı</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome İkonlar -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              yellow: '#FACC15',
+              yellowHover: '#EAB308',
+              cyan: '#06B6D4',
+              dark: '#0B0E14',
+              card: '#131823',
+              border: '#232B3E'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B0E14;
+      color: #E2E8F0;
+      background-image: radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.08) 0%, transparent 60%);
+    }
+    .neon-border {
+      border: 1px solid #232B3E;
+      transition: all 0.3s ease;
+    }
+    .neon-border:hover {
+      border-color: #FACC15;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <!-- Üst Menü (Header) -->
+  <header class="border-b border-brand-border bg-brand-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-yellow to-brand-cyan flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-yellow-500/20">
+          KE
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-wider text-white">KRİPTO <span class="text-brand-yellow">ESCOBAR</span></h1>
+          <p class="text-xs text-gray-400">Technocore & $FLOP Airdrop Asistanı</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3">
+        <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition text-xs font-semibold flex items-center gap-1.5">
+          <i class="fa-brands fa-youtube text-sm"></i> YouTube
+        </a>
+        <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="px-3 py-1.5 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan hover:bg-brand-cyan hover:text-black transition text-xs font-semibold flex items-center gap-1.5">
+          <i class="fa-solid fa-comments text-sm"></i> Technocore Lobby
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Ana İçerik -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full">
+    
+    <!-- Giriş Başlığı -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow text-xs font-semibold mb-3">
+        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Kodlama Gerektirmez • Sıfır Terminal
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">
+        Technocore AI Agent <span class="text-brand-yellow">DID Kimlik & Katkı Aracı</span>
+      </h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-sm">
+        Flop Labs ekosisteminde airdrop potansiyeli için benzersiz Ed25519 DID kimliğinizi oluşturun, Technocore lobisine ilk imzalı mesajınızı gönderin ve topluluk katkınızı kaydedin.
+      </p>
+    </div>
+
+    <!-- Adımlar Konteyneri -->
+    <div class="space-y-6">
+
+      <!-- ADIM 1: Kimlik Oluşturma -->
+      <div class="bg-brand-card rounded-2xl p-6 neon-border">
+        <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-yellow text-black font-bold flex items-center justify-center text-sm">1</span>
+            <h3 class="text-lg font-bold text-white">DID Kimliği & Parola Oluştur</h3>
+          </div>
+          <span class="text-xs text-gray-400">Ed25519 Anahtar Üretimi</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Güvenli Parolanızı Belirleyin (Min. 12 Karakter)</label>
+            <input type="password" id="passphrase" placeholder="En az 12 karakterli güvenli parola..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Parolayı Doğrulayın</label>
+            <input type="password" id="passphraseConfirm" placeholder="Parolayı tekrar yazın..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-yellow">
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 items-center">
+          <button onclick="generateIdentity()" class="px-5 py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2">
+            <i class="fa-solid fa-key"></i> Kimlik (DID) Üret
+          </button>
+          <button id="downloadBtn" onclick="downloadBackup()" disabled class="px-4 py-2.5 bg-brand-border text-gray-400 font-semibold rounded-xl text-sm transition flex items-center gap-2 cursor-not-allowed">
+            <i class="fa-solid fa-download"></i> Yedek Dosyasını İndir (.json)
+          </button>
+        </div>
+
+        <!-- Üretilen DID Gösterimi -->
+        <div id="didResultBox" class="mt-4 hidden">
+          <label class="block text-xs font-semibold text-brand-cyan mb-1">Oluşturulan Benzersiz DID Adresiniz (Public Key):</label>
+          <div class="flex items-center gap-2 bg-brand-dark p-3 rounded-xl border border-brand-border">
+            <code id="didValue" class="text-xs text-gray-300 break-all font-mono"></code>
+            <button onclick="copyToClipboard('didValue')" class="text-gray-400 hover:text-white text-xs px-2 py-1 bg-brand-border rounded">Kopyala</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADIM 2: Lobide Kendini Tanıt -->
+      <div class="bg-brand-card rounded-2xl p-6 neon-border">
+        <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-cyan text-black font-bold flex items-center justify-center text-sm">2</span>
+            <h3 class="text-lg font-bold text-white">Technocore Lobisinde Kendini Tanıt</h3>
+          </div>
+          <span class="text-xs text-gray-400">İmzalı Mesaj Gönderimi</span>
+        </div>
+
+        <p class="text-xs text-gray-400 mb-3">
+          Technocore sunucusundaki <strong>lobby</strong> odasına kimliğinizi bağlayacak ilk imzalı tanıtım metnini gönderin.
+        </p>
+
+        <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3" placeholder="Örnek: Kripto Escobar topluluğundan selamlar! Technocore ve Flop Labs için faydalı içerikler üretiyorum."></textarea>
+
+        <button onclick="postToLobby()" class="px-5 py-2.5 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i> Lobiye İmzalı Gönder
+        </button>
+
+        <div id="lobbyResultBox" class="mt-4 hidden">
+          <div class="bg-green-950/40 border border-green-500/30 rounded-xl p-3 text-xs text-green-300 flex items-center justify-between">
+            <span>✅ Başarıyla Technocore Lobisine iletildi! Sıra No (Sequence): <strong id="lobbySeq" class="text-white"></strong></span>
+            <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="underline hover:text-white">Lobide Gör &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADIM 3: Katkı Kaydı (Airdrop Görevi) -->
+      <div class="bg-brand-card rounded-2xl p-6 neon-border">
+        <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-purple-500 text-white font-bold flex items-center justify-center text-sm">3</span>
+            <h3 class="text-lg font-bold text-white">Faydalı Katkını Kaydet (Proof)</h3>
+          </div>
+          <span class="text-xs text-gray-400">Katkı & İçerik Kanıtı</span>
+        </div>
+
+        <p class="text-xs text-gray-400 mb-3">
+          Flop Labs/Technocore hakkında hazırladığınız X tweet'i, video, makale veya rehber linkini imzalayarak kaydedin.
+        </p>
+
+        <div class="space-y-3 mb-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Paylaştığınız İçerik URL'si (X Gönderisi, YouTube Videosu vb.)</label>
+            <input type="url" id="contributionUrl" placeholder="https://x.com/kullanici_adiniz/status/..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Katkı Konusu / Açıklaması</label>
+            <input type="text" id="contributionTopic" placeholder="Örnek: Kripto Escobar takipçileri için Technocore Türkçe airdrop rehberi" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
+          </div>
+        </div>
+
+        <button onclick="recordContribution()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition flex items-center gap-2">
+          <i class="fa-solid fa-stamp"></i> Katkımı İmzala ve Technocore'a Kaydet
+        </button>
+
+        <div id="contributionResultBox" class="mt-4 hidden">
+          <div class="bg-purple-950/40 border border-purple-500/30 rounded-xl p-3 text-xs text-purple-300">
+            ✅ Katkınız kaydedildi! Oda: <strong class="text-white">technocore</strong> | Sıra No: <strong id="contribSeq" class="text-white"></strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADIM 4: X'te Kanıt Paylaşımı -->
+      <div class="bg-brand-card rounded-2xl p-6 neon-border">
+        <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-blue-500 text-white font-bold flex items-center justify-center text-sm">4</span>
+            <h3 class="text-lg font-bold text-white">X (Twitter) Üzerinde Kanıt Paylaş</h3>
+          </div>
+          <span class="text-xs text-gray-400">Son Adım</span>
+        </div>
+
+        <p class="text-xs text-gray-400 mb-3">
+          Aşağıdaki hazır şablon, DID numaranız ve kayıt sıra numaranızla otomatik doldurulur. Tek tıkla X'te paylaşarak airdrop kaydınızı tamamlayın.
+        </p>
+
+        <textarea id="xTweetTemplate" readonly rows="4" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-300 focus:outline-none mb-3"></textarea>
+
+        <button onclick="shareOnX()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl text-sm transition flex items-center gap-2">
+          <i class="fa-brands fa-x-twitter"></i> X'te Otomatik Paylaş
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Alt Bilgi (Footer) -->
+  <footer class="border-t border-brand-border mt-12 py-6 bg-brand-dark text-center text-xs text-gray-500">
+    <p>© 2026 Kripto Escobar Topluluğu İçin Hazırlanmıştır. Tüm hakları saklıdır.</p>
+    <p class="mt-1">Bu araç açık kaynaklı olup tüm DID ve imzalama işlemleri tarayıcınızda yerel olarak çalışır.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

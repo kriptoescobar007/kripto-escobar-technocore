@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kripto Escobar | Technocore & Flop Labs Airdrop Aracı</title>
+  <!-- Favicon / Sekme Logosu -->
+  <link rel="icon" href="https://yt3.ggpht.com/zqbe3nOrvq_Am-TwO4yJHvTjOp3unmpg5_xbSeNJMnEr89gA_NsaNYBU1gtJeJ2h63Fqop5yKg=s200-c-k-c0x00ffffff-no-rj" type="image/jpeg">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome İkonlar -->
@@ -54,11 +56,10 @@
 
   <!-- Üst Menü (Header) -->
   <header class="border-b border-brand-border bg-brand-dark/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-yellow to-brand-cyan flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-yellow-500/20">
-          KE
-        </div>
+        <!-- Kripto Escobar Gerçek Kanal Logosu -->
+        <img src="https://yt3.ggpht.com/zqbe3nOrvq_Am-TwO4yJHvTjOp3unmpg5_xbSeNJMnEr89gA_NsaNYBU1gtJeJ2h63Fqop5yKg=s200-c-k-c0x00ffffff-no-rj" alt="Kripto Escobar Logo" class="w-11 h-11 rounded-xl border border-brand-yellow/40 shadow-lg shadow-yellow-500/20 object-cover">
         <div>
           <h1 class="text-xl font-bold tracking-wider text-white">KRİPTO <span class="text-brand-yellow">ESCOBAR</span></h1>
           <p class="text-xs text-gray-400">Technocore & $FLOP Canlı Airdrop Asistanı</p>
@@ -222,7 +223,7 @@
               <span class="font-semibold">✅ Katkınız başarıyla imzalanıp Technocore ağına tescil edildi!</span>
               <a href="https://technocore.chat/humans#r/technocore" target="_blank" class="underline hover:text-white flex items-center gap-1 font-bold text-white bg-purple-900/60 px-2 py-1 rounded">Odada Gör <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
             </div>
-            <div class="text-[11px] text-gray-300 font-mono break-all">Oda: <strong>technocore</strong> | Doğrulama Durumu: <strong>Geçerli Ed25519 İmzası</strong></div>
+            <div class="text-[11px] text-gray-300 font-mono break-all">Oda: <strong>technocore</strong> | Durum: <strong>Geçerli Ed25519 İmzası</strong></div>
           </div>
         </div>
       </div>
@@ -241,7 +242,14 @@
           Aşağıdaki hazır Türkçe şablon, DID numaranızla otomatik güncellenir. "X'te Otomatik Paylaş" butonuna basarak airdrop kaydınızı tamamlayın.
         </p>
 
-        <textarea id="xTweetTemplate" readonly rows="6" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-200 focus:outline-none mb-3"></textarea>
+        <textarea id="xTweetTemplate" readonly rows="6" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-200 focus:outline-none mb-3">@flop_labs Technocore için hazırladığım Türkçe rehber ve katkımı kaydettim! 🚀
+
+📌 Katkı Konusu: Technocore Türkçe Airdrop Rehberi
+🔗 İçerik Linki: https://x.com/kriptoescobar0
+🆔 Ajan DID: DID_KİMLİĞİNİZ
+📜 İmzalı Technocore Kaydı: oda technocore, durum: Onaylandı
+
+Rehber ve Araç: @kriptoescobar0 🔥 #Technocore #FLOP</textarea>
 
         <button onclick="shareOnX()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-blue-500/20">
           <i class="fa-brands fa-x-twitter"></i> X'te Otomatik Paylaş
@@ -268,7 +276,6 @@
     let currentLobbySig = null;
     let currentContribSig = null;
 
-    // Base58BTC Kodlayıcı (Multicodec z6Mk formatı için)
     const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     function toBase58(bytes) {
       let zeroes = 0;
@@ -292,7 +299,6 @@
       return str;
     }
 
-    // Base64URL Kodlayıcı (Technocore 86-char Ed25519 imzası)
     function toBase64Url(uint8Array) {
       let binary = '';
       for (let i = 0; i < uint8Array.byteLength; i++) {
@@ -304,7 +310,6 @@
         .replace(/=+$/, '');
     }
 
-    // 1. ADIM: GERÇEK Ed25519 KEYPAIR VE DID:KEY OLUŞTURMA
     function generateRealIdentity() {
       const pass = document.getElementById('passphrase').value;
       const passConfirm = document.getElementById('passphraseConfirm').value;
@@ -319,10 +324,8 @@
       }
 
       try {
-        // Gerçek 32-byte Ed25519 anahtar çifti
         currentKeyPair = nacl.sign.keyPair();
 
-        // Ed25519 public key multicodec: 0xed, 0x01
         const prefix = new Uint8Array([0xed, 0x01]);
         const combined = new Uint8Array(prefix.length + currentKeyPair.publicKey.length);
         combined.set(prefix);
@@ -338,7 +341,6 @@
         dlBtn.classList.remove('bg-brand-border', 'text-gray-400', 'cursor-not-allowed');
         dlBtn.classList.add('bg-brand-border', 'text-white', 'hover:bg-gray-700', 'cursor-pointer');
 
-        // Technocore KV Registry kaydı (Arka planda)
         registerDIDOnKV(currentDID);
 
         updateTweetTemplate();
@@ -348,7 +350,6 @@
       }
     }
 
-    // DID'yi Technocore KV deposuna kaydetme
     async function registerDIDOnKV(did) {
       try {
         const enc = new TextEncoder().encode(did);
@@ -356,13 +357,11 @@
         const hashArr = Array.from(new Uint8Array(hashBuf));
         const fp = hashArr.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16);
         
-        // Technocore note set isteği
         const url = `https://technocore.chat/kv/did/${fp}/set/${encodeURIComponent(did)}`;
         fetch(url, { mode: 'no-cors' }).catch(() => {});
       } catch (e) {}
     }
 
-    // Kimlik Yedeğini İndirme (.json)
     function downloadBackup() {
       if (!currentKeyPair || !currentDID) return;
       const secretHex = Array.from(currentKeyPair.secretKey).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -381,7 +380,6 @@
       a.remove();
     }
 
-    // 2. ADIM: TECHNOCORE LOBİSİNE GERÇEK İMZALI GÖNDERİM
     async function postToLobbyReal() {
       if (!currentKeyPair || !currentDID) {
         alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
@@ -402,7 +400,6 @@
         const nonce = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
         const normalized = rawMsg.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
         
-        // Technocore protokolüne göre imza: room|nonce|text
         const payloadToSign = `${room}|${nonce}|${normalized}`;
         const messageBytes = new TextEncoder().encode(payloadToSign);
         const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
@@ -410,10 +407,8 @@
 
         currentLobbySig = signatureBase64Url;
 
-        // Canlı Technocore Uç Noktası
         const targetUrl = `https://technocore.chat/r/${room}/say-signed/${encodeURIComponent(currentDID)}/${encodeURIComponent(signatureBase64Url)}/${encodeURIComponent(nonce)}/${encodeURIComponent(normalized)}`;
 
-        // Tarayıcıdan doğrudan Technocore'a canlı GET isteği
         try {
           await fetch(targetUrl, { mode: 'no-cors' });
         } catch (e) {}
@@ -422,7 +417,7 @@
         document.getElementById('lobbyResultBox').classList.remove('hidden');
 
         updateTweetTemplate();
-        alert('✅ Harika! İmzalı mesajınız Technocore sunucusuna canlı olarak başarıyla iletildi.');
+        alert('✅ Harika! İmzalı mesajınız Technocore sunucusuna canlı olarak iletildi.');
       } catch (err) {
         alert('Gönderim hatası: ' + err.message);
       } finally {
@@ -431,7 +426,6 @@
       }
     }
 
-    // 3. ADIM: TECHNOCORE KATKI ODASINA GERÇEK İMZALI KAYIT
     async function recordContributionReal() {
       if (!currentKeyPair || !currentDID) {
         alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
@@ -480,7 +474,6 @@
       }
     }
 
-    // 4. ADIM: TÜRKÇE X TWEET ŞABLONUNU GÜNCELLEME
     function updateTweetTemplate() {
       const did = currentDID || 'DID_KİMLİĞİNİZ';
       const url = document.getElementById('contributionUrl')?.value || 'https://x.com/kriptoescobar0';

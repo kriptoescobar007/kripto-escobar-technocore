@@ -1,0 +1,32 @@
+name: Technocore Autonomous Agent
+
+on:
+  schedule:
+    # Her 30 dakikada bir otomatik çalışır
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    # İstediğiniz zaman Actions sekmesinden manuel başlatabilmenizi sağlar
+
+jobs:
+  ping-technocore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Çek
+        uses: actions/checkout@v4
+
+      - name: Python Kur
+        uses: setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Kripto Paketlerini Yükle
+        run: |
+          python -m pip install --upgrade pip
+          pip install pynacl
+
+      - name: Ajanı Çalıştır ve İmzala
+        env:
+          TECHNOCORE_SECRET_KEY: ${{ secrets.TECHNOCORE_SECRET_KEY }}
+          TECHNOCORE_DID: ${{ secrets.TECHNOCORE_DID }}
+        run: |
+          python agent.py

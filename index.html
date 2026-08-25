@@ -62,12 +62,12 @@
           <p class="text-xs text-gray-400">Technocore & $FLOP Airdrop Asistanı</p>
         </div>
       </div>
-      <div class="flex items-center space-x-3">
-        <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition text-xs font-semibold flex items-center gap-1.5">
-          <i class="fa-brands fa-youtube text-sm"></i> YouTube
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+          <i class="fa-brands fa-youtube text-sm"></i> YouTube'da Takip Et
         </a>
-        <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="px-3 py-1.5 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan hover:bg-brand-cyan hover:text-black transition text-xs font-semibold flex items-center gap-1.5">
-          <i class="fa-solid fa-comments text-sm"></i> Technocore Lobby
+        <a href="https://x.com/KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white hover:text-black transition text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+          <i class="fa-brands fa-x-twitter text-sm"></i> X'te Takip Et
         </a>
       </div>
     </div>
@@ -77,16 +77,37 @@
   <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full">
     
     <!-- Giriş Başlığı -->
-    <div class="text-center mb-10">
+    <div class="text-center mb-8">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow text-xs font-semibold mb-3">
-        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Kodlama Gerektirmez • Sıfır Terminal
+        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Kodlama Gerektirmez • Sıfır Terminal • %100 Ücretsiz
       </div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">
         Technocore AI Agent <span class="text-brand-yellow">DID Kimlik & Katkı Aracı</span>
       </h2>
       <p class="text-gray-400 max-w-2xl mx-auto text-sm">
-        Flop Labs ekosisteminde airdrop potansiyeli için benzersiz Ed25519 DID kimliğinizi oluşturun, Technocore lobisine ilk imzalı mesajınızı gönderin ve topluluk katkınızı kaydedin.
+        Flop Labs ($FLOP) ekosistemindeki airdrop fırsatı için Ed25519 DID kimliğinizi oluşturun, Technocore lobisine ilk imzalı mesajınızı gönderin ve topluluk katkınızı kaydedin.
       </p>
+    </div>
+
+    <!-- Topluluk Takip Banner'ı -->
+    <div class="bg-gradient-to-r from-brand-card via-gray-900 to-brand-card p-4 rounded-2xl border border-brand-yellow/30 mb-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg shadow-yellow-500/5">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-brand-yellow/20 border border-brand-yellow/40 flex items-center justify-center text-brand-yellow text-2xl">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white">Yeni Airdrop ve Testnet Fırsatlarını Kaçırmayın!</h4>
+          <p class="text-xs text-gray-400">Kripto Escobar YouTube kanalına abone olarak en güncel rehberlere anında ulaşın.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 w-full md:w-auto">
+        <a href="https://www.youtube.com/@KriptoEsCoBaR?sub_confirmation=1" target="_blank" class="flex-1 md:flex-none px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-red-600/30">
+          <i class="fa-brands fa-youtube"></i> Abone Ol
+        </a>
+        <a href="https://x.com/KriptoEsCoBaR" target="_blank" class="flex-1 md:flex-none px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-xl text-xs border border-gray-600 transition flex items-center justify-center gap-2">
+          <i class="fa-brands fa-x-twitter"></i> Takip Et
+        </a>
+      </div>
     </div>
 
     <!-- Adımlar Konteyneri -->
@@ -114,7 +135,7 @@
         </div>
 
         <div class="flex flex-wrap gap-3 items-center">
-          <button onclick="generateIdentity()" class="px-5 py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2">
+          <button onclick="generateIdentity()" class="px-5 py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-yellow-500/20">
             <i class="fa-solid fa-key"></i> Kimlik (DID) Üret
           </button>
           <button id="downloadBtn" onclick="downloadBackup()" disabled class="px-4 py-2.5 bg-brand-border text-gray-400 font-semibold rounded-xl text-sm transition flex items-center gap-2 cursor-not-allowed">
@@ -143,19 +164,19 @@
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Technocore sunucusundaki <strong>lobby</strong> odasına kimliğinizi bağlayacak ilk imzalı tanıtım metnini gönderin.
+          Technocore sunucusundaki <strong>lobby</strong> odasına kimliğinizi bağlayacak ilk tanıtım metnini gönderin.
         </p>
 
-        <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3" placeholder="Örnek: Kripto Escobar topluluğundan selamlar! Technocore ve Flop Labs için faydalı içerikler üretiyorum."></textarea>
+        <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3" placeholder="Örnek: Kripto Escobar topluluğundan selamlar! Technocore ve Flop Labs için airdrop rehberleri hazırlıyorum."></textarea>
 
-        <button onclick="postToLobby()" class="px-5 py-2.5 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2">
+        <button onclick="postToLobby()" class="px-5 py-2.5 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
           <i class="fa-solid fa-paper-plane"></i> Lobiye İmzalı Gönder
         </button>
 
         <div id="lobbyResultBox" class="mt-4 hidden">
           <div class="bg-green-950/40 border border-green-500/30 rounded-xl p-3 text-xs text-green-300 flex items-center justify-between">
-            <span>✅ Başarıyla Technocore Lobisine iletildi! Sıra No (Sequence): <strong id="lobbySeq" class="text-white"></strong></span>
-            <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="underline hover:text-white">Lobide Gör &rarr;</a>
+            <span>✅ Başarıyla Technocore Lobisine iletildi! Sıra No (Sequence): <strong id="lobbySeq" class="text-white font-mono"></strong></span>
+            <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="underline hover:text-white flex items-center gap-1">Lobide Gör <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
           </div>
         </div>
       </div>
@@ -171,7 +192,7 @@
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Flop Labs/Technocore hakkında hazırladığınız X tweet'i, video, makale veya rehber linkini imzalayarak kaydedin.
+          Flop Labs/Technocore hakkında hazırladığınız X tweet'i, video, makale veya rehber linkini kaydedin.
         </p>
 
         <div class="space-y-3 mb-4">
@@ -185,13 +206,13 @@
           </div>
         </div>
 
-        <button onclick="recordContribution()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition flex items-center gap-2">
+        <button onclick="recordContribution()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-purple-600/20">
           <i class="fa-solid fa-stamp"></i> Katkımı İmzala ve Technocore'a Kaydet
         </button>
 
         <div id="contributionResultBox" class="mt-4 hidden">
           <div class="bg-purple-950/40 border border-purple-500/30 rounded-xl p-3 text-xs text-purple-300">
-            ✅ Katkınız kaydedildi! Oda: <strong class="text-white">technocore</strong> | Sıra No: <strong id="contribSeq" class="text-white"></strong>
+            ✅ Katkınız kaydedildi! Oda: <strong class="text-white">technocore</strong> | Sıra No: <strong id="contribSeq" class="text-white font-mono"></strong>
           </div>
         </div>
       </div>
@@ -207,12 +228,12 @@
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Aşağıdaki hazır şablon, DID numaranız ve kayıt sıra numaranızla otomatik doldurulur. Tek tıkla X'te paylaşarak airdrop kaydınızı tamamlayın.
+          Aşağıdaki hazır Türkçe şablon, DID numaranız ve sıra numaranızla otomatik güncellenir. "X'te Otomatik Paylaş" butonuna basarak airdrop kaydınızı tamamlayın.
         </p>
 
-        <textarea id="xTweetTemplate" readonly rows="4" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-300 focus:outline-none mb-3"></textarea>
+        <textarea id="xTweetTemplate" readonly rows="5" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-300 focus:outline-none mb-3"></textarea>
 
-        <button onclick="shareOnX()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl text-sm transition flex items-center gap-2">
+        <button onclick="shareOnX()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-blue-500/20">
           <i class="fa-brands fa-x-twitter"></i> X'te Otomatik Paylaş
         </button>
       </div>
@@ -221,7 +242,11 @@
   </main>
 
   <!-- Alt Bilgi (Footer) -->
-  <footer class="border-t border-brand-border mt-12 py-6 bg-brand-dark text-center text-xs text-gray-500">
+  <footer class="border-t border-brand-border mt-12 py-8 bg-brand-dark text-center text-xs text-gray-500">
+    <div class="flex items-center justify-center space-x-4 mb-3">
+      <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="text-gray-400 hover:text-red-500 transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+      <a href="https://x.com/KriptoEsCoBaR" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+    </div>
     <p>© 2026 Kripto Escobar Topluluğu İçin Hazırlanmıştır. Tüm hakları saklıdır.</p>
     <p class="mt-1">Bu araç açık kaynaklı olup tüm DID ve imzalama işlemleri tarayıcınızda yerel olarak çalışır.</p>
   </footer>

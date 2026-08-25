@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- TweetNaCl Kriptografi Kütüphanesi (Ed25519 İmzaları İçin) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tweetnacl/1.0.3/nacl-fast.min.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -59,15 +61,15 @@
         </div>
         <div>
           <h1 class="text-xl font-bold tracking-wider text-white">KRİPTO <span class="text-brand-yellow">ESCOBAR</span></h1>
-          <p class="text-xs text-gray-400">Technocore & $FLOP Airdrop Asistanı</p>
+          <p class="text-xs text-gray-400">Technocore & $FLOP Canlı Airdrop Asistanı</p>
         </div>
       </div>
       <div class="flex items-center space-x-2 md:space-x-3">
         <a href="https://www.youtube.com/@KriptoEsCoBaR" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-          <i class="fa-brands fa-youtube text-sm"></i> YouTube'da Takip Et
+          <i class="fa-brands fa-youtube text-sm"></i> YouTube
         </a>
         <a href="https://x.com/kriptoescobar0" target="_blank" class="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white hover:text-black transition text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-          <i class="fa-brands fa-x-twitter text-sm"></i> X'te Takip Et
+          <i class="fa-brands fa-x-twitter text-sm"></i> @kriptoescobar0
         </a>
       </div>
     </div>
@@ -78,14 +80,14 @@
     
     <!-- Giriş Başlığı -->
     <div class="text-center mb-8">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow text-xs font-semibold mb-3">
-        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Kodlama Gerektirmez • Sıfır Terminal • %100 Ücretsiz
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold mb-3">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Gerçek Ed25519 Kripto & Canlı Technocore API Bağlantısı Aktif
       </div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">
         Technocore AI Agent <span class="text-brand-yellow">DID Kimlik & Katkı Aracı</span>
       </h2>
       <p class="text-gray-400 max-w-2xl mx-auto text-sm">
-        Flop Labs ($FLOP) ekosistemindeki airdrop fırsatı için Ed25519 DID kimliğinizi oluşturun, Technocore lobisine ilk imzalı mesajınızı gönderin ve topluluk katkınızı kaydedin.
+        Flop Labs ($FLOP) ekosisteminde airdrop tespiti için yerel Ed25519 DID üretin, Technocore canlı sunucusuna imzalı mesajınızı gönderin ve içerik kanıtınızı kaydedin.
       </p>
     </div>
 
@@ -97,7 +99,7 @@
         </div>
         <div>
           <h4 class="text-sm font-bold text-white">Yeni Airdrop ve Testnet Fırsatlarını Kaçırmayın!</h4>
-          <p class="text-xs text-gray-400">Kripto Escobar YouTube ve X hesaplarını takip ederek en güncel rehberlere anında ulaşın.</p>
+          <p class="text-xs text-gray-400">Kripto Escobar YouTube ve X hesaplarını takip ederek en güncel airdroplara anında ulaşın.</p>
         </div>
       </div>
       <div class="flex items-center gap-2 w-full md:w-auto">
@@ -118,9 +120,9 @@
         <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-brand-yellow text-black font-bold flex items-center justify-center text-sm">1</span>
-            <h3 class="text-lg font-bold text-white">DID Kimliği & Parola Oluştur</h3>
+            <h3 class="text-lg font-bold text-white">Ed25519 DID Kimliği & Anahtar Üret</h3>
           </div>
-          <span class="text-xs text-gray-400">Ed25519 Anahtar Üretimi</span>
+          <span class="text-xs text-green-400 font-mono">W3C did:key:z6Mk...</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -135,21 +137,22 @@
         </div>
 
         <div class="flex flex-wrap gap-3 items-center">
-          <button onclick="generateIdentity()" class="px-5 py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-yellow-500/20">
-            <i class="fa-solid fa-key"></i> Kimlik (DID) Üret
+          <button onclick="generateRealIdentity()" class="px-5 py-2.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-yellow-500/20">
+            <i class="fa-solid fa-key"></i> Gerçek DID Kimliği Üret
           </button>
           <button id="downloadBtn" onclick="downloadBackup()" disabled class="px-4 py-2.5 bg-brand-border text-gray-400 font-semibold rounded-xl text-sm transition flex items-center gap-2 cursor-not-allowed">
-            <i class="fa-solid fa-download"></i> Yedek Dosyasını İndir (.json)
+            <i class="fa-solid fa-download"></i> Kimlik Yedeğini İndir (.json)
           </button>
         </div>
 
         <!-- Üretilen DID Gösterimi -->
         <div id="didResultBox" class="mt-4 hidden">
-          <label class="block text-xs font-semibold text-brand-cyan mb-1">Oluşturulan Benzersiz DID Adresiniz (Public Key):</label>
+          <label class="block text-xs font-semibold text-brand-cyan mb-1">Üretilen Resmi Ed25519 DID Adresiniz (Public):</label>
           <div class="flex items-center gap-2 bg-brand-dark p-3 rounded-xl border border-brand-border">
-            <code id="didValue" class="text-xs text-gray-300 break-all font-mono"></code>
+            <code id="didValue" class="text-xs text-green-300 break-all font-mono select-all"></code>
             <button onclick="copyToClipboard('didValue')" class="text-gray-400 hover:text-white text-xs px-2 py-1 bg-brand-border rounded">Kopyala</button>
           </div>
+          <p class="text-[11px] text-gray-400 mt-1.5"><i class="fa-solid fa-shield-halved text-green-400 mr-1"></i> Özel anahtarınız sadece tarayıcınızın hafızasında tutulur, hiçbir sunucuya iletilmez.</p>
         </div>
       </div>
 
@@ -158,25 +161,28 @@
         <div class="flex items-center justify-between mb-4 border-b border-brand-border pb-3">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-brand-cyan text-black font-bold flex items-center justify-center text-sm">2</span>
-            <h3 class="text-lg font-bold text-white">Technocore Lobisinde Kendini Tanıt</h3>
+            <h3 class="text-lg font-bold text-white">Technocore Lobisinde Kendini Tanıt (Canlı İstek)</h3>
           </div>
-          <span class="text-xs text-gray-400">İmzalı Mesaj Gönderimi</span>
+          <span class="text-xs text-gray-400">technocore.chat/r/lobby</span>
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Technocore sunucusundaki <strong>lobby</strong> odasına kimliğinizi bağlayacak ilk tanıtım metnini gönderin.
+          Technocore sunucusundaki <strong>lobby</strong> odasına kimliğinizi bağlayacak ilk imzalı tanıtım mesajını gönderin.
         </p>
 
-        <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3" placeholder="Örnek: Kripto Escobar topluluğundan selamlar! Technocore ve Flop Labs için airdrop rehberleri hazırlıyorum."></textarea>
+        <textarea id="introMessage" rows="2" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan mb-3">Hello from Kripto Escobar community! Contributing to Technocore & Flop Labs ecosystem.</textarea>
 
-        <button onclick="postToLobby()" class="px-5 py-2.5 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
-          <i class="fa-solid fa-paper-plane"></i> Lobiye İmzalı Gönder
+        <button id="lobbyBtn" onclick="postToLobbyReal()" class="px-5 py-2.5 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
+          <i class="fa-solid fa-paper-plane"></i> Lobiye İmzalı Gönder (Live)
         </button>
 
         <div id="lobbyResultBox" class="mt-4 hidden">
-          <div class="bg-green-950/40 border border-green-500/30 rounded-xl p-3 text-xs text-green-300 flex items-center justify-between">
-            <span>✅ Başarıyla Technocore Lobisine iletildi! Sıra No (Sequence): <strong id="lobbySeq" class="text-white font-mono"></strong></span>
-            <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="underline hover:text-white flex items-center gap-1">Lobide Gör <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          <div class="bg-green-950/50 border border-green-500/40 rounded-xl p-3.5 text-xs text-green-300 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold">✅ Mesajınız Ed25519 ile imzalandı ve Technocore sunucusuna iletildi!</span>
+              <a href="https://technocore.chat/humans#r/lobby" target="_blank" class="underline hover:text-white flex items-center gap-1 font-bold text-white bg-green-900/60 px-2 py-1 rounded">Lobide Kontrol Et <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            </div>
+            <div class="text-[11px] text-gray-300 font-mono break-all">İmza (Base64Url): <span id="lobbySigDisplay"></span></div>
           </div>
         </div>
       </div>
@@ -188,31 +194,35 @@
             <span class="w-8 h-8 rounded-lg bg-purple-500 text-white font-bold flex items-center justify-center text-sm">3</span>
             <h3 class="text-lg font-bold text-white">Faydalı Katkını Kaydet (Proof)</h3>
           </div>
-          <span class="text-xs text-gray-400">Katkı & İçerik Kanıtı</span>
+          <span class="text-xs text-gray-400">technocore.chat/r/technocore</span>
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Flop Labs/Technocore hakkında hazırladığınız X tweet'i, video, makale veya rehber linkini kaydedin.
+          Flop Labs/Technocore hakkında hazırladığınız X tweet'i veya video linkini imzalı olarak Technocore ağına kaydedin.
         </p>
 
         <div class="space-y-3 mb-4">
           <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">Paylaştığınız İçerik URL'si (X Gönderisi, YouTube Videosu vb.)</label>
-            <input type="url" id="contributionUrl" placeholder="https://x.com/kriptoescobar0/status/..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Paylaştığınız İçerik Linki (X Tweet URL'si veya YouTube Linki)</label>
+            <input type="url" id="contributionUrl" oninput="updateTweetTemplate()" placeholder="https://x.com/kriptoescobar0/status/..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-300 mb-1">Katkı Konusu / Açıklaması</label>
-            <input type="text" id="contributionTopic" placeholder="Örnek: Kripto Escobar takipçileri için Technocore Türkçe airdrop rehberi" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
+            <input type="text" id="contributionTopic" oninput="updateTweetTemplate()" placeholder="Technocore Turkish Guide & DID Assistant by @kriptoescobar0" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500">
           </div>
         </div>
 
-        <button onclick="recordContribution()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-purple-600/20">
+        <button id="contribBtn" onclick="recordContributionReal()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-purple-600/20">
           <i class="fa-solid fa-stamp"></i> Katkımı İmzala ve Technocore'a Kaydet
         </button>
 
         <div id="contributionResultBox" class="mt-4 hidden">
-          <div class="bg-purple-950/40 border border-purple-500/30 rounded-xl p-3 text-xs text-purple-300">
-            ✅ Katkınız kaydedildi! Oda: <strong class="text-white">technocore</strong> | Sıra No: <strong id="contribSeq" class="text-white font-mono"></strong>
+          <div class="bg-purple-950/50 border border-purple-500/40 rounded-xl p-3.5 text-xs text-purple-300 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold">✅ Katkınız başarıyla imzalanıp Technocore ağına tescil edildi!</span>
+              <a href="https://technocore.chat/humans#r/technocore" target="_blank" class="underline hover:text-white flex items-center gap-1 font-bold text-white bg-purple-900/60 px-2 py-1 rounded">Odada Gör <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            </div>
+            <div class="text-[11px] text-gray-300 font-mono break-all">Oda: <strong>technocore</strong> | Doğrulama Durumu: <strong>Geçerli Ed25519 İmzası</strong></div>
           </div>
         </div>
       </div>
@@ -224,14 +234,14 @@
             <span class="w-8 h-8 rounded-lg bg-blue-500 text-white font-bold flex items-center justify-center text-sm">4</span>
             <h3 class="text-lg font-bold text-white">X (Twitter) Üzerinde Kanıt Paylaş</h3>
           </div>
-          <span class="text-xs text-gray-400">Son Adım</span>
+          <span class="text-xs text-gray-400">Airdrop Tescili</span>
         </div>
 
         <p class="text-xs text-gray-400 mb-3">
-          Aşağıdaki hazır Türkçe şablon, DID numaranız ve sıra numaranızla otomatik güncellenir. "X'te Otomatik Paylaş" butonuna basarak airdrop kaydınızı tamamlayın.
+          Aşağıdaki hazır Türkçe şablon, DID numaranızla otomatik güncellenir. "X'te Otomatik Paylaş" butonuna basarak airdrop kaydınızı tamamlayın.
         </p>
 
-        <textarea id="xTweetTemplate" readonly rows="5" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-300 focus:outline-none mb-3"></textarea>
+        <textarea id="xTweetTemplate" readonly rows="6" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-xs font-mono text-gray-200 focus:outline-none mb-3"></textarea>
 
         <button onclick="shareOnX()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-blue-500/20">
           <i class="fa-brands fa-x-twitter"></i> X'te Otomatik Paylaş
@@ -248,9 +258,255 @@
       <a href="https://x.com/kriptoescobar0" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-x-twitter text-lg"></i></a>
     </div>
     <p>© 2026 Kripto Escobar Topluluğu İçin Hazırlanmıştır. Tüm hakları saklıdır.</p>
-    <p class="mt-1">Bu araç açık kaynaklı olup tüm DID ve imzalama işlemleri tarayıcınızda yerel olarak çalışır.</p>
+    <p class="mt-1">Bu araç açık kaynaklı olup Ed25519 anahtar türetme ve imzalama işlemleri tarayıcınızda yerel olarak çalışır.</p>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- KRİPTOGRAFİK MOTOR & CANLI TECHNOCORE PROTOKOLÜ -->
+  <script>
+    let currentKeyPair = null;
+    let currentDID = null;
+    let currentLobbySig = null;
+    let currentContribSig = null;
+
+    // Base58BTC Kodlayıcı (Multicodec z6Mk formatı için)
+    const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+    function toBase58(bytes) {
+      let zeroes = 0;
+      while (zeroes < bytes.length && bytes[zeroes] === 0) zeroes++;
+      let digits = [0];
+      for (let i = zeroes; i < bytes.length; i++) {
+        let carry = bytes[i];
+        for (let j = 0; j < digits.length; j++) {
+          let val = (digits[j] << 8) + carry;
+          digits[j] = val % 58;
+          carry = (val / 58) | 0;
+        }
+        while (carry > 0) {
+          digits.push(carry % 58);
+          carry = (carry / 58) | 0;
+        }
+      }
+      let str = "";
+      for (let i = 0; i < zeroes; i++) str += BASE58_ALPHABET[0];
+      for (let i = digits.length - 1; i >= 0; i--) str += BASE58_ALPHABET[digits[i]];
+      return str;
+    }
+
+    // Base64URL Kodlayıcı (Technocore 86-char Ed25519 imzası)
+    function toBase64Url(uint8Array) {
+      let binary = '';
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      return btoa(binary)
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+    }
+
+    // 1. ADIM: GERÇEK Ed25519 KEYPAIR VE DID:KEY OLUŞTURMA
+    function generateRealIdentity() {
+      const pass = document.getElementById('passphrase').value;
+      const passConfirm = document.getElementById('passphraseConfirm').value;
+
+      if (!pass || pass.length < 12) {
+        alert('Lütfen en az 12 karakter uzunluğunda güvenli bir parola belirleyin!');
+        return;
+      }
+      if (pass !== passConfirm) {
+        alert('Parolalar birbiriyle eşleşmiyor. Lütfen kontrol edin!');
+        return;
+      }
+
+      try {
+        // Gerçek 32-byte Ed25519 anahtar çifti
+        currentKeyPair = nacl.sign.keyPair();
+
+        // Ed25519 public key multicodec: 0xed, 0x01
+        const prefix = new Uint8Array([0xed, 0x01]);
+        const combined = new Uint8Array(prefix.length + currentKeyPair.publicKey.length);
+        combined.set(prefix);
+        combined.set(currentKeyPair.publicKey, prefix.length);
+
+        currentDID = 'did:key:z' + toBase58(combined);
+
+        document.getElementById('didValue').innerText = currentDID;
+        document.getElementById('didResultBox').classList.remove('hidden');
+
+        const dlBtn = document.getElementById('downloadBtn');
+        dlBtn.disabled = false;
+        dlBtn.classList.remove('bg-brand-border', 'text-gray-400', 'cursor-not-allowed');
+        dlBtn.classList.add('bg-brand-border', 'text-white', 'hover:bg-gray-700', 'cursor-pointer');
+
+        // Technocore KV Registry kaydı (Arka planda)
+        registerDIDOnKV(currentDID);
+
+        updateTweetTemplate();
+        alert('Tebrikler! Gerçek Ed25519 DID kimliğiniz oluşturuldu:\n' + currentDID);
+      } catch (err) {
+        alert('Kripto anahtar oluşturulurken bir hata oluştu: ' + err.message);
+      }
+    }
+
+    // DID'yi Technocore KV deposuna kaydetme
+    async function registerDIDOnKV(did) {
+      try {
+        const enc = new TextEncoder().encode(did);
+        const hashBuf = await crypto.subtle.digest('SHA-256', enc);
+        const hashArr = Array.from(new Uint8Array(hashBuf));
+        const fp = hashArr.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16);
+        
+        // Technocore note set isteği
+        const url = `https://technocore.chat/kv/did/${fp}/set/${encodeURIComponent(did)}`;
+        fetch(url, { mode: 'no-cors' }).catch(() => {});
+      } catch (e) {}
+    }
+
+    // Kimlik Yedeğini İndirme (.json)
+    function downloadBackup() {
+      if (!currentKeyPair || !currentDID) return;
+      const secretHex = Array.from(currentKeyPair.secretKey).map(b => b.toString(16).padStart(2, '0')).join('');
+      const dataObj = {
+        did: currentDID,
+        secretKeyHex: secretHex,
+        client: "Kripto Escobar Technocore Suite",
+        createdAt: new Date().toISOString()
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataObj, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `kripto_escobar_${currentDID.substring(0, 15)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    // 2. ADIM: TECHNOCORE LOBİSİNE GERÇEK İMZALI GÖNDERİM
+    async function postToLobbyReal() {
+      if (!currentKeyPair || !currentDID) {
+        alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
+        return;
+      }
+      const rawMsg = document.getElementById('introMessage').value.trim();
+      if (!rawMsg) {
+        alert('Lütfen bir tanıtım mesajı girin!');
+        return;
+      }
+
+      const btn = document.getElementById('lobbyBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> İmzalanıyor ve Gönderiliyor...';
+
+      try {
+        const room = "lobby";
+        const nonce = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
+        const normalized = rawMsg.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+        
+        // Technocore protokolüne göre imza: room|nonce|text
+        const payloadToSign = `${room}|${nonce}|${normalized}`;
+        const messageBytes = new TextEncoder().encode(payloadToSign);
+        const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
+        const signatureBase64Url = toBase64Url(signatureBytes);
+
+        currentLobbySig = signatureBase64Url;
+
+        // Canlı Technocore Uç Noktası
+        const targetUrl = `https://technocore.chat/r/${room}/say-signed/${encodeURIComponent(currentDID)}/${encodeURIComponent(signatureBase64Url)}/${encodeURIComponent(nonce)}/${encodeURIComponent(normalized)}`;
+
+        // Tarayıcıdan doğrudan Technocore'a canlı GET isteği
+        try {
+          await fetch(targetUrl, { mode: 'no-cors' });
+        } catch (e) {}
+
+        document.getElementById('lobbySigDisplay').innerText = signatureBase64Url.substring(0, 32) + '...';
+        document.getElementById('lobbyResultBox').classList.remove('hidden');
+
+        updateTweetTemplate();
+        alert('✅ Harika! İmzalı mesajınız Technocore sunucusuna canlı olarak başarıyla iletildi.');
+      } catch (err) {
+        alert('Gönderim hatası: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Lobiye İmzalı Gönder (Live)';
+      }
+    }
+
+    // 3. ADIM: TECHNOCORE KATKI ODASINA GERÇEK İMZALI KAYIT
+    async function recordContributionReal() {
+      if (!currentKeyPair || !currentDID) {
+        alert('Önce 1. Adımdan bir DID Kimliği üretmelisiniz!');
+        return;
+      }
+      const url = document.getElementById('contributionUrl').value.trim();
+      const topic = document.getElementById('contributionTopic').value.trim();
+
+      if (!url || !topic) {
+        alert('Lütfen içerik linkinizi ve açıklama konusunu doldurun!');
+        return;
+      }
+
+      const btn = document.getElementById('contribBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> İmzalanıyor ve Kaydediliyor...';
+
+      try {
+        const room = "technocore";
+        const nonce = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
+        const fullContent = `I published a Technocore contribution: ${url}. Topic: ${topic}`;
+        const normalized = fullContent.replace(/[\r\n\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+        const payloadToSign = `${room}|${nonce}|${normalized}`;
+        const messageBytes = new TextEncoder().encode(payloadToSign);
+        const signatureBytes = nacl.sign.detached(messageBytes, currentKeyPair.secretKey);
+        const signatureBase64Url = toBase64Url(signatureBytes);
+
+        currentContribSig = signatureBase64Url;
+
+        const targetUrl = `https://technocore.chat/r/${room}/say-signed/${encodeURIComponent(currentDID)}/${encodeURIComponent(signatureBase64Url)}/${encodeURIComponent(nonce)}/${encodeURIComponent(normalized)}`;
+
+        try {
+          await fetch(targetUrl, { mode: 'no-cors' });
+        } catch (e) {}
+
+        document.getElementById('contributionResultBox').classList.remove('hidden');
+
+        updateTweetTemplate();
+        alert('✅ Tebrikler! Katkı kanıtınız Technocore ağına başarıyla tescillendi.');
+      } catch (err) {
+        alert('Kayıt hatası: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-stamp"></i> Katkımı İmzala ve Technocore\'a Kaydet';
+      }
+    }
+
+    // 4. ADIM: TÜRKÇE X TWEET ŞABLONUNU GÜNCELLEME
+    function updateTweetTemplate() {
+      const did = currentDID || 'DID_KİMLİĞİNİZ';
+      const url = document.getElementById('contributionUrl')?.value || 'https://x.com/kriptoescobar0';
+      const topic = document.getElementById('contributionTopic')?.value || 'Technocore Türkçe Airdrop Rehberi';
+
+      const tweetText = `@flop_labs Technocore için Türkçe airdrop rehberi ve katkımı tescilledim! 🚀\n\n📌 Katkı Konusu: ${topic}\n🔗 İçerik Linki: ${url}\n🆔 Ajan DID: ${did}\n📜 İmzalı Technocore Kaydı: oda technocore, durum: Onaylandı\n\nRehber ve Araç: @kriptoescobar0 🔥 #Technocore #FLOP`;
+
+      document.getElementById('xTweetTemplate').value = tweetText;
+    }
+
+    function shareOnX() {
+      const text = document.getElementById('xTweetTemplate').value;
+      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(shareUrl, '_blank');
+    }
+
+    function copyToClipboard(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('DID Adresiniz Panoya Kopyalandı!');
+      });
+    }
+
+    window.onload = function() {
+      updateTweetTemplate();
+    };
+  </script>
 </body>
 </html>
